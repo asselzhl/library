@@ -54,3 +54,61 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 .main {
     flex: 1 1 auto;
 }
+/*----------------------------------HEADER----------------------------------*/
+.header { 
+    background: #0C0C0E;
+    padding: 20px 0px;
+}
+.header_container { 
+    display: flex;
+}
+.logo__title { 
+    color: #FFFFFF;
+    font-family: Forum;
+    font-size: 30px;
+    line-height: 167%;
+    letter-spacing: 0.6px;
+    margin-right: 454px;
+}
+.menu { 
+    margin-right: 40px;
+}
+.menu__list { 
+    display: flex;
+}
+.menu__item { 
+    
+}
+.menu__item:not(:last-child) {
+    margin-right: 30px;
+}
+.menu__link { 
+    color: #FFFFFF;
+    font-size: 20px;
+    line-height: 250%;
+}
+.header__user {
+    background: transparent;
+}
+/*----------------------------------WELCOME----------------------------------*/
+.welcome { 
+    background: url(./assets/images/welcome.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 600px;
+}
+.welcome__container { 
+
+}
+.welcome__title { 
+    color: #FFFFFF;
+    font-family: Forum;
+    font-size: 40px;
+    line-height: 125%;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    background-color: #0C0C0E;
+    padding: 35px 40px;
+    max-width: 600px;
+    text-align: center;
+}
