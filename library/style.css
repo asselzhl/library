@@ -54,6 +54,17 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 .main {
     flex: 1 1 auto;
 }
+._ibg {
+    position: relative;
+}
+._ibg img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    object-fit: cover;
+}
 /*----------------------------------HEADER----------------------------------*/
 .header { 
     background: #0C0C0E;
@@ -92,13 +103,16 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 }
 /*----------------------------------WELCOME----------------------------------*/
 .welcome { 
-    background: url(./assets/images/welcome.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    min-height: 600px;
+    position: relative;
 }
 .welcome__container { 
 
+}
+.welcome__body {
+    padding: 220px 0px 160px 0px;
+    position: relative;
+    z-index: 2;
+    
 }
 .welcome__title { 
     color: #FFFFFF;
@@ -109,6 +123,15 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     text-transform: uppercase;
     background-color: #0C0C0E;
     padding: 35px 40px;
-    max-width: 600px;
     text-align: center;
+    margin-left: -20px;
+    max-width: 600px;
+    display: inline-block;
+}
+.welcome__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 }
