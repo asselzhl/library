@@ -278,10 +278,19 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 }
 .coffee__menu { 
     display: flex;
-    gap: 0px 480px;
+    justify-content: space-between;
 }
-.menu__item { 
-    flex: 0 1 31%;
+.menu__list { 
+    flex: 0 1 31.8%;
+}
+.menu__list >*:not(:last-child) {
+    margin-bottom: 40px;
+}
+.menu__list_aligned {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    flex: 0 1 35%;
 }
 .menu__title { 
     color: #BB945F;
@@ -289,4 +298,196 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 }
 .menu__title::after { 
     display: none;
+}
+.menu__item { 
+    display: flex;
+    align-items: center;
+    
+}
+.menu__item > *:not(:last-child) {
+    margin-right: 59.2px;
+}
+.menu__label { 
+    color: #000000;
+    font-size: 20px;
+    line-height: 200%;
+    letter-spacing: 2px;
+    flex: 0 1 46%;
+}
+.menu__line { 
+    background-color: #BB945F;
+    width: 100px;
+    height: 1px;
+}
+.menu__price { 
+    color: #000000;
+    font-size: 20px;
+    font-family: Forum;
+    line-height: 200%;
+    letter-spacing: 2px;
+}
+/*----------------------------------CONTACTS----------------------------------*/
+.contacts { 
+    padding: 20px 0px 40px;
+}
+.contacts__container { }
+.contacts__title { 
+    margin-bottom: 61px;
+}
+.contacts__body { 
+    display: flex;
+    justify-content: space-between;
+}
+.contacts__info { 
+    flex: 0 1 36%;
+    margin-right: 150px;
+}
+
+.info__label { 
+    color: #000000;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 200%;
+    letter-spacing: 2px;
+}
+.info__label:nth-child(1) {
+    margin-bottom: 40px;
+}
+.info__label:nth-child(5) {
+    margin: 40px 0px 20px;
+}
+.info__text { 
+    color: #000000;
+    font-size: 20px;
+    line-height: 200%;
+    letter-spacing: 2px;
+}
+.info__text:not(:last-child) {
+    margin-bottom: 20px;
+}
+.info__text span {
+    font-weight: 700;
+}
+.info__link { 
+    color: #000000;
+}
+.contacts__image { 
+    flex: 0 1 50%;
+}
+.contacts__image img {
+    max-width: 100%;
+}
+/*----------------------------------LIBRARY-CARD----------------------------------*/
+.library-card { 
+    padding: 20px 0px 40px;
+}
+.library-card__container { }
+.library-card__title { 
+    margin-bottom: 61px;
+}
+.library-card__body { 
+    display: flex;
+    justify-content: space-between;
+}
+.form { 
+    flex: 0 1 43%;
+    margin-right: 200px;
+}
+.form__title { 
+    color: #000000;
+    font-size: 30px;
+    letter-spacing: 0.6px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.form__body { 
+    border: 3px solid #BB945F;
+    padding: 20px 20px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form__bg {
+    background-color: #BB945F;
+    padding: 20px 20px 25px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+.form__label { 
+    color: #000000;
+    font-size: 30px;
+    font-family: Forum;
+    line-height: 167%;
+    letter-spacing: 0.6px;
+    margin-bottom: 20px;
+}
+.form__item { }
+.form__item:not(:last-child) {
+    margin-bottom: 25px;
+}
+.form__input {
+    padding: 8px 20px;
+    display: block;
+    width: 100%;
+    color: #BB945F;
+    font-family: Forum;
+    font-size: 30px;
+    line-height: 167%;
+    letter-spacing: 0.6px;
+    border-radius: 10px;
+}
+.form__input::placeholder { 
+    color: #8E8E8E;
+    font-family: Forum;
+    font-size: 30px;
+    line-height: 167%;
+    letter-spacing: 0.6px;
+}
+.form__button { 
+    color: #0C0C0E;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    background: transparent;
+    padding: 9px 39px;
+    border-radius: 2px;
+    border: 1px solid #0C0C0E;
+}
+.library-card__login { 
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    flex: 0 1 33%;
+}
+.library-card__login > *:not(:last-child) {
+    margin-bottom: 35px;
+}
+.login__title { 
+    color: #000000;
+    font-family: Forum;
+    font-size: 30px;
+    letter-spacing: 0.6px;
+}
+.login__text { 
+    color: #000000;
+    font-size: 20px;
+    line-height: 200%;
+    letter-spacing: 0.4px;
+    text-align: right;
+}
+.login__buttons { }
+.login__button { 
+    color: #0C0C0E;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 9px 0px;
+    border-radius: 2px;
+    border: 1px solid #0C0C0E;
+    background: transparent;
+    min-width: 75px;
+    text-align: center;
+}
+.login__button:not(:last-child) {
+    margin-right: 20px;
 }
