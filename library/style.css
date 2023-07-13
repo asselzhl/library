@@ -97,6 +97,24 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     color: #FFFFFF;
     font-size: 20px;
     line-height: 250%;
+    position: relative;
+    transition: all 500ms ease;
+}
+.navigation__link::before {
+    content: "";
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: #BB945F;
+	transition: all 500ms ease;
+}
+.navigation__link:hover {
+    color:#8E8E8E;
+}
+.navigation__link:hover::before {
+    width: 100%;
 }
 .header__user {
     background: transparent;
@@ -247,6 +265,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     max-width: 355px;
     margin-bottom: 15px;
     text-transform: capitalize;
+    min-height: 320px;
 }
 .card__button { 
     border-radius: 2px;
@@ -258,6 +277,37 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 1px;
+    position: relative;
+    transition: all 500ms ease;
+    z-index: 1;
+}
+button[disabled] {
+    color: #BB945F;
+    border: 1px solid #BB945F;
+}
+button[disabled] {
+    cursor: default;
+}
+button[disabled]:hover:before {
+    width: 0;
+    
+}
+.card__button:hover {
+    border: 1px solid #BB945F;
+}
+.card__button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: #BB945F;
+	transition: all 500ms ease;
+    z-index: -1;
+}
+.card__button:hover:before {
+	width: 100%;
 }
 .card__image { 
     position: absolute;
@@ -365,8 +415,9 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 .info__text:not(:last-child) {
     margin-bottom: 20px;
 }
-.info__text span {
+.info__text:last-child a {
     font-weight: 700;
+    color: #000000;
 }
 .info__link { 
     color: #000000;
@@ -452,6 +503,26 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     padding: 9px 39px;
     border-radius: 2px;
     border: 1px solid #0C0C0E;
+    position: relative;
+    z-index: 1;
+    transition: all 500ms ease;
+}
+.form__button:hover {
+    border: 1px solid #BB945F;
+}
+.form__button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    z-index: -1;
+    background-color: #BB945F;
+    transition: all 500ms ease;
+}
+.form__button:hover::before {
+    width: 100%;
 }
 .library-card__login { 
     display: flex;
@@ -487,6 +558,26 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     background: transparent;
     min-width: 75px;
     text-align: center;
+    position: relative;
+    z-index: 1;
+    transition: all 500ms ease;
+}
+.login__button:hover {
+    border: 1px solid #BB945F;
+}
+.login__button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #BB945F;
+    transition: all 500ms ease;
+    z-index: -1;
+}
+.login__button:hover::before {
+    width: 100%;
 }
 .login__button:not(:last-child) {
     margin-right: 20px;
@@ -510,21 +601,20 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     margin-right: 200px;
 }
 .location__link {
-    margin-bottom: 10px;
+    margin-bottom: 18px;
 }
 .location__link a { 
     color: #FFFFFF;
 }
 .socials__list { 
-    
+    display: flex;
+    gap: 0px 15px;
 }
 .socials__item { 
 
 }
 .socials__link { 
     
-}
-.twitter {
 }
 .footer__schedule { 
     flex: 0 1 11%;

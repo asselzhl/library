@@ -28,7 +28,7 @@
             </div>
         </header>
         <main class="main">
-            <div class="welcome">
+            <section class="welcome">
                 <div class="welcome__container _container">
                     <div class="welcome__body">
                         <h2 class="welcome__title">Welcome <br> to the Brooklyn Library</h2>
@@ -37,8 +37,8 @@
                 <div class="welcome__image _ibg">
                     <img src="./assets/images/welcome.jpg" alt="welcome cover">
                 </div>
-            </div>
-            <div class="about">
+            </section>
+            <section class="about">
                 <div class="about__container _container">
                     <h2 class="about__title page__title">About</h2>
                     <h3 class="about__subtitle page__subtitle">The Brooklyn Library is a free workspace, a large number of books and a cozy coffee shop inside</h3>
@@ -48,8 +48,8 @@
                         <img src="./assets/images/about3.jpg" alt="">
                     </div>
                 </div>
-            </div>
-            <div class="favorites">
+            </section>
+            <section class="favorites">
                 <div class="favorites__container _container">
                     <h2 class="favorites__title page__title">Favorites</h2>
                     <div class="favorites__pick">
@@ -69,7 +69,7 @@
                             </div>
                             <div class="options__item">
                                 <input type="radio" name="season" id="autumn" value="autumn" class="options__input">
-                                <label for="autum" class="options__label">Autumn</label>
+                                <label for="autumn" class="options__label">Autumn</label>
                             </div>
                         </div>
                     </div>
@@ -109,15 +109,15 @@
                             <p class="card__subtitle">THE LAST QUEEN</p>
                             <p class="card__subtitle">By Clive Irving</p>
                             <p class="card__description">A timely and revelatory new biography of Queen Elizabeth (and her family) exploring how the Windsors have evolved and thrived as the modern world has changed around them.</p>
-                            <button class="card__button">Buy</button>
+                            <button disabled class="card__button">Own</button>
                             <div class="card__image">
                                 <img src="./assets/images/winter4.jpg" alt="">
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="coffee">
+            </section>
+            <section class="coffee">
                 <div class="coffee__container _container">
                     <h2 class="coffee__title page__title">Coffee Shop</h2>
                     <h3 class="coffee__subtitle page__subtitle">In our library, we have of cozy coffee shop, welcoming in customers with frothy cappuccinos and friendly conversation. You can get a favorite book and read in coffee shop. Our barista to cook you best coffee, and also you can try desserts from bakery.</h3>
@@ -190,26 +190,26 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="contacts">
+            </section>
+            <section class="contacts">
                 <div class="contacts__container _container">
                     <h2 class="page__title contacts__title">Our Contacts</h2>
                     <div class="contacts__body">
                         <div class="contacts__info">
                             <h4 class="info__label">For all Library inquiries:</h4>
-                            <p class="info__text">Please call<a class="info__link" href="tel:(617) 730-2370">(617) 730-2370</a></p>
-                            <p class="info__text">For TTY service, please call<a class="info__link" href="tel:(617) 730-2370">(617) 730-2370</a></p>
-                            <p class="info__text">Putterham Library:<a class="info__link" href="tel:(617) 730-2385">(617) 730-2385</a></p>
+                            <p class="info__text">Please call<a class="info__link" href="tel:+6177302370">(617) 730-2370</a></p>
+                            <p class="info__text">For TTY service, please call<a class="info__link" href="tel:+6177302370">(617) 730-2370</a></p>
+                            <p class="info__text">Putterham Library:<a class="info__link" href="tel:+6177302385">(617) 730-2385</a></p>
                             <h4 class="info__label">Senior Staff</h4>
-                            <p class="info__text">Library Director: <span>Amanda Hirst</span></p>
+                            <p class="info__text">Library Director: <a href="mailto:AmandaHirst@gmail.com">Amanda Hirst</a></p>
                         </div>
                         <div class="contacts__image">
                             <img src="./assets/images/map.jpg" alt="map">
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="library-card">
+            </section>
+            <section class="library-card">
                 <div class="library-card__container _container">
                     <h2 class="page__title library-card__title">Digital Library Cards</h2>
                     <div class="library-card__body">
@@ -238,7 +238,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
         </main>
         <footer class="footer">
             <div class="footer__container _container">
@@ -248,14 +248,14 @@
                             <a href="https://goo.gl/maps/LcnTPumwdVXacMg77" target="_blank">286 Cadman Plaza, New York, NY 11238, United States</a>
                         </div>
                         <ul class="socials__list">
-                            <li class="socials__item"><a href="https://twitter.com/Twitter" class="socials__link twitter"></a></li>
-                            <li class="socials__item"><a href="https://www.instagram.com/instagram/?hl=en" class="socials__link instagram"></a></li>
-                            <li class="socials__item"><a href="https://www.facebook.com/zuck/" class="socials__link facebook"></a></li>
+                            <li class="socials__item"><a href="https://twitter.com/Twitter"><img src="./assets/icons/twitter.svg" alt="twitter"></a></li>
+                            <li class="socials__item"><a href="https://www.instagram.com/instagram/?hl=en"><img src="./assets/icons/instagram.svg" alt="instagram"></a></li>
+                            <li class="socials__item"><a href="https://www.facebook.com/zuck/"><img src="./assets/icons/facebook.svg" alt=""></a></li>
                         </ul>
                     </div>
                     <div class="footer__schedule">
-                        <p class="schedule__text">Mon - Fri <br> 08:00 am - 07:00 pm</p>
-                        <p class="schedule__text">Sat - Sun <br></b> 10:00 am - 06:00 pm</p>
+                        <p class="schedule__text">Mon - Fri <br>08:00 am - 07:00 pm</p>
+                        <p class="schedule__text">Sat - Sun <br>10:00 am - 06:00 pm</p>
                     </div>
                 </div>
                 <div class="footer__line"></div>
