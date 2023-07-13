@@ -491,3 +491,67 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 .login__button:not(:last-child) {
     margin-right: 20px;
 }
+/*----------------------------------FOOTER----------------------------------*/
+.footer { 
+    background: #0C0C0E;
+    padding: 20px 0px 44px;
+}
+.footer__container { }
+.footer__body { 
+    color: #FFFFFF;
+    font-size: 15px;
+    line-height: 133%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+.footer__links { 
+    flex: 0 1 16%;
+    margin-right: 200px;
+}
+.location__link {
+    margin-bottom: 10px;
+}
+.location__link a { 
+    color: #FFFFFF;
+}
+.socials__list { 
+    
+}
+.socials__item { 
+
+}
+.socials__link { 
+    
+}
+.twitter {
+}
+.footer__schedule { 
+    flex: 0 1 11%;
+    text-align: right;
+}
+.schedule__text:not(:last-child) { 
+    margin-bottom: 10px;
+}
+.footer__line {
+    width: 100%;
+    height: 1px;
+    background-color: #FFFFFF;
+    margin-bottom: 44px;
+}
+.footer__aside { 
+    display: flex;
+    justify-content: space-between;
+}
+.aside__text { 
+    color: #FFFFFF;
+    font-size: 20px;
+    letter-spacing: 2px;
+    flex: 0 1 22%;
+}
+.aside__text:last-child {
+    text-align: right;
+}
+.aside__link { 
+    color: #FFFFFF;
+}
