@@ -72,6 +72,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 }
 .header_container { 
     display: flex;
+    justify-content: space-between;
 }
 .logo__title { 
     color: #FFFFFF;
@@ -79,7 +80,10 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     font-size: 30px;
     line-height: 167%;
     letter-spacing: 0.6px;
-    margin-right: 454px;
+}
+.header__links {
+    display: flex;
+    margin-left: 50px;
 }
 .navigation { 
     margin-right: 40px;
@@ -118,6 +122,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 }
 .header__user {
     background: transparent;
+    display: inline-block;
 }
 /*----------------------------------WELCOME----------------------------------*/
 .welcome { 
@@ -191,8 +196,46 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     text-align: center;
 }
 .about__slider { 
-    display: flex;
+    overflow-x: hidden;
+    width: 100%;
+    margin-bottom: 40px;
+}
+.slider__wrapper { 
+    display: flex; 
+    transition: ease 0.5s;
     gap: 0px 25px;
+}
+.slider__image { 
+    flex: 0 0 32%;
+}
+.slider__image img {
+    max-width: 100%;
+}
+.about__dots { 
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95px;
+}
+.dot__wrapper {
+    width: 25px;
+    height: 25px;
+}
+.dot__wrapper:hover {
+    cursor: pointer;
+}
+.dot { 
+    width: 16px;
+    height: 16px;
+    background-color: #0C0C0E;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 5px;
+    outline: none;
+    border: none;
+}
+.dot.active { 
+    background: #BB945F;
 }
 /*----------------------------------FAVORITES----------------------------------*/
 .favorites { 

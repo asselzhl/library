@@ -15,16 +15,18 @@
         <header class="header">
             <div class="header_container _container">
                 <h1 class="logo__title">Brooklyn Public Library</h1>
-                <nav class="navigation">
-                    <ul class="navigation__list">
-                        <li class="navigation__item"><a class="navigation__link" href="">About</a></li>
-                        <li class="navigation__item"><a class="navigation__link" href="">Favorites</a></li>
-                        <li class="navigation__item"><a class="navigation__link" href="">Coffee shop</a></li>
-                        <li class="navigation__item"><a class="navigation__link" href="">Contacts</a></li>
-                        <li class="navigation__item"><a class="navigation__link" href="">Library Card</a></li>
-                    </ul>
-                </nav>
-                <button class="header__user"><img src="./assets/icons/userIcon.svg" alt=""></button>
+                <div class="header__links">
+                    <nav class="navigation">
+                        <ul class="navigation__list">
+                            <li class="navigation__item"><a class="navigation__link" href="">About</a></li>
+                            <li class="navigation__item"><a class="navigation__link" href="">Favorites</a></li>
+                            <li class="navigation__item"><a class="navigation__link" href="">Coffee shop</a></li>
+                            <li class="navigation__item"><a class="navigation__link" href="">Contacts</a></li>
+                            <li class="navigation__item"><a class="navigation__link" href="">Library Card</a></li>
+                        </ul>
+                    </nav>
+                    <button class="header__user"><img src="./assets/icons/userIcon.svg" alt=""></button>
+                </div>
             </div>
         </header>
         <main class="main">
@@ -43,9 +45,24 @@
                     <h2 class="about__title page__title">About</h2>
                     <h3 class="about__subtitle page__subtitle">The Brooklyn Library is a free workspace, a large number of books and a cozy coffee shop inside</h3>
                     <div class="about__slider">
-                        <img src="./assets/images/about1.jpg" alt="">
-                        <img src="./assets/images/about2.jpg" alt="">
-                        <img src="./assets/images/about3.jpg" alt="">
+                        <div class="slider__wrapper">
+                            <div class="slider__image"><img src="./assets/images/about1.jpg" alt=""></div>
+                            <div class="slider__image"><img src="./assets/images/about2.jpg" alt=""></div>
+                            <div class="slider__image"><img src="./assets/images/about3.jpg" alt=""></div>
+
+                            <div class="slider__image"><img src="./assets/images/about2.jpg" alt=""></div>
+                            <div class="slider__image"><img src="./assets/images/about3.jpg" alt=""></div>
+                            <div class="slider__image"><img src="./assets/images/about4.jpg" alt=""></div>
+
+                            <div class="slider__image"><img src="./assets/images/about3.jpg" alt=""></div>
+                            <div class="slider__image"><img src="./assets/images/about4.jpg" alt=""></div>
+                            <div class="slider__image"><img src="./assets/images/about5.jpg" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="about__dots">
+                        <div class="dot__wrapper"><button class="dot active"></button></div>
+                        <div class="dot__wrapper"><button class="dot"></button></div>
+                        <div class="dot__wrapper"><button class="dot"></button></div>
                     </div>
                 </div>
             </section>
