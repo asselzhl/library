@@ -202,11 +202,11 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 }
 .slider__wrapper { 
     display: flex; 
-    transition: ease 0.5s;
     gap: 0px 25px;
+    transition: ease 0.5s;
 }
 .slider__image { 
-    flex: 0 0 32%;
+    flex: 0 0 32.2%;
 }
 .slider__image img {
     max-width: 100%;
