@@ -93,9 +93,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 .navigation__list { 
     display: flex;
 }
-.navigation__item { 
-    
-}
 .navigation__item:not(:last-child) {
     margin-right: 30px;
 }
@@ -200,7 +197,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     display: block;
     background: transparent;
 }
-.form-popup { }
 .form-popup__title { 
     color: #000000;
     font-family: Forum;
@@ -325,9 +321,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 .welcome { 
     position: relative;
 }
-.welcome__container { 
-
-}
 .welcome__body {
     padding: 220px 0px 160px 0px;
     position: relative;
@@ -358,9 +351,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 /*----------------------------------ABOUT----------------------------------*/
 .about { 
     padding: 20px 0px 40px;
-}
-.about__container { 
-
 }
 .about__title {
     margin-bottom: 61px;
@@ -438,7 +428,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 .favorites { 
     padding: 20px 0px 40px;
 }
-.favorites__container { }
 .favorites__title { 
     margin-bottom: 61px;
 }
@@ -457,8 +446,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 .pick__options > *:not(:last-child) {
     margin-right: 90px;
 }
-.options__item { }
-.options__input { }
 .options__label { 
     color: #000000;
     font-size: 20px;
@@ -563,7 +550,6 @@ button[disabled]:hover:before {
 .coffee { 
     padding: 20px 0px 40px;
 }
-.coffee__container { }
 .coffee__title { 
     margin-bottom: 61px;
 }
@@ -625,7 +611,6 @@ button[disabled]:hover:before {
 .contacts { 
     padding: 20px 0px 40px;
 }
-.contacts__container { }
 .contacts__title { 
     margin-bottom: 61px;
 }
@@ -677,7 +662,6 @@ button[disabled]:hover:before {
 .library-card { 
     padding: 20px 0px 40px;
 }
-.library-card__container { }
 .library-card__title { 
     margin-bottom: 61px;
 }
@@ -717,7 +701,6 @@ button[disabled]:hover:before {
     letter-spacing: 0.6px;
     margin-bottom: 20px;
 }
-.form__item { }
 .form__item:not(:last-child) {
     margin-bottom: 25px;
 }
@@ -791,7 +774,6 @@ button[disabled]:hover:before {
     letter-spacing: 0.4px;
     text-align: right;
 }
-.login__buttons { }
 .login__button { 
     color: #0C0C0E;
     font-size: 10px;
@@ -832,7 +814,6 @@ button[disabled]:hover:before {
     background: #0C0C0E;
     padding: 20px 0px 44px;
 }
-.footer__container { }
 .footer__body { 
     color: #FFFFFF;
     font-size: 15px;
@@ -854,12 +835,6 @@ button[disabled]:hover:before {
 .socials__list { 
     display: flex;
     gap: 0px 15px;
-}
-.socials__item { 
-
-}
-.socials__link { 
-    
 }
 .footer__schedule { 
     flex: 0 1 11%;
