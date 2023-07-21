@@ -164,7 +164,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 .drop__menu button:not(:last-child) {
     margin-bottom: 10px;
 }
-.modal {
+.modal, .modal__buy-card {
     visibility: hidden;
     opacity: 0;
     position: fixed;
@@ -177,14 +177,15 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     background-color: rgba(0,0,0,0.7); 
     transition: 0.3s ease 0s;
 }
-.modal._active {
+.modal._active,
+.modal__buy-card._active {
     visibility: visible;
     opacity: 1;
 }
 .login__popup { 
     background-color: #FFFFFF;
     padding: 20px 25px;
-    width: 250px;
+    max-width: 250px;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -297,8 +298,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
         position: absolute;
         top: -100%;
         right: 0;
-        width: 332px;
-        height: 570px;
+        max-width: 332px;
         background-color: #000000;
         transition: top 0.3s ease 0s;
         z-index: 10;
@@ -402,7 +402,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     display: flex;
     margin-left: auto;
     margin-right: auto;
-    width: 95px;
+    max-width: 95px;
 }
 .dot__wrapper {
     width: 25px;
@@ -499,6 +499,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     text-transform: capitalize;
     min-height: 320px;
 }
+.buy-card__button,
 .card__button { 
     border-radius: 2px;
     border: 1px solid #0C0C0E;
@@ -524,10 +525,12 @@ button[disabled]:hover:before {
     width: 0;
     
 }
+.buy-card__button:hover,
 .card__button:hover {
     border: 1px solid #BB945F;
 }
-.card__button::before {
+.card__button::before, 
+.buy-card__button::before {
     content: "";
     position: absolute;
     top: 0;
@@ -538,6 +541,7 @@ button[disabled]:hover:before {
 	transition: all 500ms ease;
     z-index: -1;
 }
+.buy-card__button:hover::before,
 .card__button:hover:before {
 	width: 100%;
 }
@@ -545,6 +549,79 @@ button[disabled]:hover:before {
     position: absolute;
     bottom: -1px;
     right: -40px;
+}
+.modal__buy-card { }
+.buy-card__body { 
+    max-width: 650px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.buy-card__title { 
+    color: #FFFFFF;
+    background: #0C0C0E;
+    font-family: Forum;
+    font-size: 40px;
+    line-height: 50%;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    padding: 20px 0px;
+    text-align: center;
+}
+.buy-card__close {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    background: transparent;
+}
+.buy-card__content { 
+    display: flex;
+    background: #FFFFFF;
+    padding: 30px 40px 40px;
+}
+.buy-card__form { 
+    margin-right: 40px;
+    flex: 0 1 37%;
+}
+.buy-card__item { 
+    margin-bottom: 10px;
+}
+.buy-card__label { 
+    color: #000000;
+    font-size: 15px;
+    line-height: 133%;
+    letter-spacing: 0.3px;
+    margin-bottom: 10px;
+    display: block;
+}
+.buy-card__input { 
+    border: 1px solid #BB945F;
+    display: inline-block;
+    width: 100%;
+    padding: 1px;
+}
+#expiration, #cvc {
+    max-width: 45px;
+    margin-right: 10px;
+}
+.buy-card__button { 
+    margin-top: 10px;
+    margin-right: 25px;
+}
+.buy-card__price { 
+    color: #0C0C0E;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    
+}
+.buy-card__text { 
+    color: #8E8E8E;
+    font-size: 15px;
+    line-height: 133%;
+    letter-spacing: 2px;
+    flex: 0 1 61%;
 }
 /*----------------------------------COFFEE----------------------------------*/
 .coffee { 
