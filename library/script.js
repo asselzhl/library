@@ -127,7 +127,18 @@ const loginTitle = document.querySelector('.login__title');
 const loginText = document.querySelector('.login__text');
 checkButton.addEventListener('submit', e => {
     e.preventDefault ();
-    
+
     loginTitle.innerHTML = 'Visit your profile';
     loginText.innerHTML = 'With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.'
 })
+
+
+
+
+/*----------------------------------FAVORITES-PICKER----------------------------------*/
+
+const radioButtons = document.querySelectorAll('input[type=radio]');
+const winterWrapper = document.getElementById('winterWrapper');
+const springWrapper = document.getElementById('springWrapper');
+const summerWrapper = document.getElementById('summerWrapper');
+const autumnWrapper = document.getElementById('autumnWrapper');
