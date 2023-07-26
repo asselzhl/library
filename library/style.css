@@ -135,13 +135,12 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     text-align: center;
     position: absolute;
     right: 15px;
-    top: 65px;
+    top: -100%;
     z-index: 10;
-    transform: translate(150%, 0px);
     transition: 0.3s ease 0s;
 }
 .drop__menu._active {
-    transform: translate(0px, 0px);
+    top: 65px;
 }
 .drop__title { 
     font-size: 15px;
