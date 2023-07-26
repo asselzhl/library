@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="./assets/icons/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Forum&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <title>Brooklyn Public Library</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header_container _container">
+                <h1 class="logo__title">Brooklyn Public Library</h1>
+                <div class="header__links">
+                    <nav class="navigation">
+                        <ul class="navigation__list">
+                            <li class="navigation__item"><a class="navigation__link" href="#" data-goto=".about">About</a></li>
+                            <li class="navigation__item"><a class="navigation__link" href="#" data-goto=".favorites">Favorites</a></li>
+                            <li class="navigation__item"><a class="navigation__link" href="#" data-goto=".coffee">Coffee shop</a></li>
+                            <li class="navigation__item"><a class="navigation__link" href="#" data-goto=".contacts">Contacts</a></li>
+                            <li class="navigation__item"><a class="navigation__link" href="#" data-goto=".library-card">Library Card</a></li>
+                        </ul>
+                    </nav>
+                    <button class="header__user"><img src="./assets/icons/userIcon.svg" alt=""></button>
+                    <div class="drop__menu">
+                        <h3 class="drop__title">Profile</h3>
+                        <div class="drop__line"></div>
+                        <button class="drop__button" id="dropLogin">Log In</button>
+                        <button class="drop__button" id="dropRegister">Register</button>
+                    </div>
+                    <div class="modal" id="loginModal">
+                        <div class="login__popup">
+                            <button class="form-popup__close">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                    <path d="M2 16.8507L17 2.00003" stroke="#0C0C0E" stroke-width="3"/>
+                                    <path d="M2 2.14926L17 17" stroke="#0C0C0E" stroke-width="3"/>
+                                </svg>
+                            </button>
+                            <form action="#" class="form-popup">
+                                <h3 class="form-popup__title">LOGIN</h3>
+                                <div class="form-popup__item">
+                                    <label for="loginEmail" class="form-popup__label">E-mail or readers card</label>
+                                    <input type="text" name="loginEmail" id="loginEmail" class="form-popup__input">
+                                </div>
+                                <div class="form-popup__item">
+                                    <label for="loginPassword" class="form-popup__label">Password</label>
+                                    <input type="password" name="loginPassword" id="loginPassword" class="form-popup__input">
+                                </div>
+                                <button class="form-popup__button">Log In</button>
+                                <div class="form-popup__text">
+                                    Don't have an account? 
+                                    <a href="" class="form-popup__link">Register</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal" id="registerModal">
+                        <div class="login__popup">
+                            <button class="form-popup__close">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                    <path d="M2 16.8507L17 2.00003" stroke="#0C0C0E" stroke-width="3"/>
+                                    <path d="M2 2.14926L17 17" stroke="#0C0C0E" stroke-width="3"/>
+                                </svg>
+                            </button>
+                            <form action="#" class="form-popup">
+                                <h3 class="form-popup__title">REGISTER</h3>
+                                <div class="form-popup__item">
+                                    <label for="registerFirstName" class="form-popup__label">First name</label>
+                                    <input type="text" name="firstName" id="registerFirstName" class="form-popup__input">
+                                </div>
+                                <div class="form-popup__item">
+                                    <label for="registerLastName" class="form-popup__label">Last name</label>
+                                    <input type="text" name="lastName" id="registerLastName" class="form-popup__input">
+                                </div>
+                                <div class="form-popup__item">
+                                    <label for="registerEmail" class="form-popup__label">E-mail</label>
+                                    <input type="text" name="registerEmail" id="registerEmail" class="form-popup__input">
+                                </div>
+                                <div class="form-popup__item">
+                                    <label for="registerPassword" class="form-popup__label">Password</label>
+                                    <input type="password" name="registerPassword" id="registerPassword" class="form-popup__input">
+                                </div>
+                                <button class="form-popup__button">Sign Up</button>
+                                <div class="form-popup__text">
+                                    Already have an account? 
+                                    <a href="" class="form-popup__link">Login</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="burger__menu">
+                        <div class="menu__icon">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <main class="main">
+            <section class="welcome">
+                <div class="welcome__container _container">
+                    <div class="welcome__body">
+                        <h2 class="welcome__title">Welcome <br> to the Brooklyn Library</h2>
+                    </div>
+                </div>
+                <div class="welcome__image _ibg">
+                    <img src="./assets/images/welcome.jpg" alt="welcome cover">
+                </div>
+            </section>
+            <section class="about">
+                <div class="about__container _container">
+                    <h2 class="about__title page__title">About</h2>
+                    <h3 class="about__subtitle page__subtitle">The Brooklyn Library is a free workspace, a large number of books and a cozy coffee shop inside</h3>
+                    <div class="about__slider">
+                        <div class="slider__wrapper">
+                            <div class="slider__image"><img src="./assets/images/about1.jpg" alt=""></div>
+                            <div class="slider__image"><img src="./assets/images/about2.jpg" alt=""></div>
+                            <div class="slider__image"><img src="./assets/images/about3.jpg" alt=""></div>
+                            <div class="slider__image"><img src="./assets/images/about4.jpg" alt=""></div>
+                            <div class="slider__image"><img src="./assets/images/about5.jpg" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="about__dots">
+                        <div class="dot__wrapper"><button class="dot active"></button></div>
+                        <div class="dot__wrapper"><button class="dot"></button></div>
+                        <div class="dot__wrapper"><button class="dot"></button></div>
+                    </div>
+                </div>
+            </section>
+            <section class="favorites">
+                <div class="favorites__container _container">
+                    <h2 class="favorites__title page__title">Favorites</h2>
+                    <div class="favorites__pick">
+                        <div class="pick__label">Pick favorites of season</div>
+                        <div class="pick__options">
+                            <div class="options__item">
+                                <input checked type="radio"  name="season" id="winter" value="winter" class="options__input">
+                                <label for="winter" class="options__label"><span>Winter</span></label>
+                            </div>
+                            <div class="options__item">
+                                <input type="radio" name="season" id="spring" value="spring" class="options__input">
+                                <label for="spring" class="options__label"><span>Spring</span></label>
+                            </div>
+                            <div class="options__item">
+                                <input type="radio" name="season" id="summer" value="summer" class="options__input">
+                                <label for="summer" class="options__label"><span>Summer</span></label>
+                            </div>
+                            <div class="options__item">
+                                <input type="radio" name="season" id="autumn" value="autumn" class="options__input">
+                                <label for="autumn" class="options__label"><span>Autumn</span></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="favorites__cards">
+                        <div class="cards__wrapper" id="winterWrapper">
+                            <div class="card__item">
+                                <h4 class="card__title">Staff Picks</h4>
+                                <p class="card__subtitle">THE BOOK EATERS</p>
+                                <p class="card__subtitle">By Sunyi Dean</p>
+                                <p class="card__description">An unusual sci-fi story about a book eater woman who tries desperately to save her dangerous mind-eater son from tradition and certain death. Complete with dysfunctional family values, light Sapphic romance, and a strong, complex protagonist. Not for the faint of heart.</p>
+                                <button class="card__button">Buy</button>
+                                <div class="card__image">
+                                    <img src="./assets/images/winter1.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__item">
+                                <h4 class="card__title">Staff Picks</h4>
+                                <p class="card__subtitle">CACKLE</p>
+                                <p class="card__subtitle">By Rachel Harrison</p>
+                                <p class="card__description">Are your Halloween movies of choice The Witches of Eastwick and Practical Magic? Look no further than here - where a woman recovering from a breakup moves to a quaint town in upstate New York and befriends a beautiful witch.</p>
+                                <button class="card__button">Buy</button>
+                                <div class="card__image">
+                                    <img src="./assets/images/winter2.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__item">
+                                <h4 class="card__title">Staff Picks</h4>
+                                <p class="card__subtitle">Dante: Poet of the Secular World</p>
+                                <p class="card__subtitle">By Erich Auerbach</p>
+                                <p class="card__description">Auerbach's engaging book places the 'Comedy' within the tradition of epic, tragedy, and philosophy in general, arguing for Dante's uniqueness as one who raised the individual and his drama of soul into something of divine significance—an inspired introduction to Dante's main themes.</p>
+                                <button class="card__button">Buy</button>
+                                <div class="card__image">
+                                    <img src="./assets/images/winter3.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__item">
+                                <h4 class="card__title">Staff Picks</h4>
+                                <p class="card__subtitle">THE LAST QUEEN</p>
+                                <p class="card__subtitle">By Clive Irving</p>
+                                <p class="card__description">A timely and revelatory new biography of Queen Elizabeth (and her family) exploring how the Windsors have evolved and thrived as the modern world has changed around them.</p>
+                                <button disabled class="card__button">Own</button>
+                                <div class="card__image">
+                                    <img src="./assets/images/winter4.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cards__wrapper" id="springWrapper">
+                            <div class="card__item">
+                                <h4 class="card__title">Staff Picks</h4>
+                                <p class="card__subtitle">THE BODY</p>
+                                <p class="card__subtitle">By Stephen King</p>
+                                <p class="card__description">Powerful novel that takes you back to a nostalgic time, exploring both the beauty and danger and loss of innocence that is youth.</p>
+                                <button class="card__button">Buy</button>
+                                <div class="card__image">
+                                    <img src="./assets/images/spring1.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__item">
+                                <h4 class="card__title">Staff Picks</h4>
+                                <p class="card__subtitle">Carry: A Memoir of Survival on Stolen Land</p>
+                                <p class="card__subtitle">By Toni Jenson</p>
+                                <p class="card__description">This memoir about the author's relationship with gun violence feels both expansive and intimate, resulting in a lyrical indictment of the way things are.</p>
+                                <button class="card__button">Buy</button>
+                                <div class="card__image">
+                                    <img src="./assets/images/spring2.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__item">
+                                <h4 class="card__title">Staff Picks</h4>
+                                <p class="card__subtitle">Days of Distraction</p>
+                                <p class="card__subtitle">By Alexandra Chang</p>
+                                <p class="card__description">A sardonic view of Silicon Valley culture, a meditation on race, and a journal of displacement and belonging, all in one form-defying package of spare prose.</p>
+                                <button class="card__button">Buy</button>
+                                <div class="card__image">
+                                    <img src="./assets/images/spring3.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__item">
+                                <h4 class="card__title">Staff Picks</h4>
+                                <p class="card__subtitle">Dominicana</p>
+                                <p class="card__subtitle">By Angie Cruz</p>
+                                <p class="card__description">A fascinating story of a teenage girl who marries a man twice her age with the promise to bring her to America. Her marriage is an opportunity for her family to eventually immigrate. For fans of Isabel Allende and Julia Alvarez.</p>
+                                <button disabled class="card__button">Own</button>
+                                <div class="card__image">
+                                    <img src="./assets/images/spring4.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cards__wrapper" id="summerWrapper">
+                            <div class="card__item">
+                                <h4 class="card__title">Staff Picks</h4>
+                                <p class="card__subtitle">Crude: A Memoir</p>
+                                <p class="card__subtitle">By Pablo Fajardo & ​Sophie Tardy-Joubert</p>
+                                <p class="card__description">Drawing and color by Damien Roudeau | This book illustrates the struggles of a group of indigenous Ecuadoreans as they try to sue the ChevronTexaco company for damage their oil fields did to the Amazon and her people</p>
+                                <button class="card__button">Buy</button>
+                                <div class="card__image">
+                                    <img src="./assets/images/summer1.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__item">
+                                <h4 class="card__title">Staff Picks</h4>
+                                <p class="card__subtitle">Let My People Go Surfing</p>
+                                <p class="card__subtitle">By Yvon Chouinard</p>
+                                <p class="card__description">Chouinard—climber, businessman, environmentalist—shares tales of courage and persistence from his experience of founding and leading Patagonia, Inc. Full title: Let My People Go Surfing: The Education of a Reluctant Businessman, Including 10 More Years of Business Unusual.</p>
+                                <button class="card__button">Buy</button>
+                                <div class="card__image">
+                                    <img src="./assets/images/summer2.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__item">
+                                <h4 class="card__title">Staff Picks</h4>
+                                <p class="card__subtitle">The Octopus Museum: Poems</p>
+                                <p class="card__subtitle">By Brenda Shaughnessy</p>
+                                <p class="card__description">This collection of bold and scathingly beautiful feminist poems imagines what comes after our current age of environmental destruction, racism, sexism, and divisive politics.</p>
+                                <button class="card__button">Buy</button>
+                                <div class="card__image">
+                                    <img src="./assets/images/summer3.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__item">
+                                <h4 class="card__title">Staff Picks</h4>
+                                <p class="card__subtitle">Shark Dialogues: A Novel</p>
+                                <p class="card__subtitle">By Kiana Davenport</p>
+                                <p class="card__description">An epic saga of seven generations of one family encompasses the tumultuous history of Hawaii as a Hawaiian woman gathers her four granddaughters together in an erotic tale of villains and dreamers, queens and revolutionaries, lepers and healers.</p>
+                                <button disabled class="card__button">Own</button>
+                                <div class="card__image">
+                                    <img src="./assets/images/summer4.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cards__wrapper" id="autumnWrapper">
+                            <div class="card__item">
+                                <h4 class="card__title">Staff Picks</h4>
+                                <p class="card__subtitle">Casual Conversation</p>
+                                <p class="card__subtitle">By Renia White</p>
+                                <p class="card__description">White's impressive debut collection takes readers through and beyond the concepts of conversation and the casual - both what we say to each other and what we don't, examining the possibilities around how we construct and communicate identity. </p>
+                                <button class="card__button">Buy</button>
+                                <div class="card__image">
+                                    <img src="./assets/images/autumn1.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__item">
+                                <h4 class="card__title">Staff Picks</h4>
+                                <p class="card__subtitle">The Great Fire</p>
+                                <p class="card__subtitle">By Lou Ureneck</p>
+                                <p class="card__description">The harrowing story of an ordinary American and a principled Naval officer who, horrified by the burning of Smyrna, led an extraordinary rescue effort that saved a quarter of a million refugees from the Armenian Genocide</p>
+                                <button class="card__button">Buy</button>
+                                <div class="card__image">
+                                    <img src="./assets/images/autumn2.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__item">
+                                <h4 class="card__title">Staff Picks</h4>
+                                <p class="card__subtitle">Rickey: The Life and Legend</p>
+                                <p class="card__subtitle">By Howard Bryant</p>
+                                <p class="card__description">With the fall rolling around, one can't help but think of baseball's postseason coming up! And what better way to prepare for it than reading the biography of one of the game's all-time greatest performers, the Man of Steal, Rickey Henderson?</p>
+                                <button class="card__button">Buy</button>
+                                <div class="card__image">
+                                    <img src="./assets/images/autumn3.jpg" alt="">
+                                </div>
+                            </div>
+                            <div class="card__item">
+                                <h4 class="card__title">Staff Picks</h4>
+                                <p class="card__subtitle">Slug: And Other Stories</p>
+                                <p class="card__subtitle">By Megan Milks</p>
+                                <p class="card__description">Exes Tegan and Sara find themselves chained together by hairballs of codependency. A father and child experience the shared trauma of giving birth to gods from their wounds.</p>
+                                <button disabled class="card__button">Own</button>
+                                <div class="card__image">
+                                    <img src="./assets/images/autumn4.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal__buy-card">
+                        <div class="buy-card__body">
+                            <h3 class="buy-card__title">Buy a library card</h3>
+                            <button class="buy-card__close">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+                                    <path d="M2 16.8507L17 2" stroke="white" stroke-width="3"/>
+                                    <path d="M2 2.14929L17 17" stroke="white" stroke-width="3"/>
+                                  </svg>
+                                </button>
+                            <div class="buy-card__content">
+                                <form action="#" class="buy-card__form">
+                                    <div class="buy-card__item">
+                                        <label for="buyCardNumber" class="buy-card__label">Bank card number</label>
+                                        <input type="number" name="cardNumber" id="buyCardNumber" class="buy-card__input">
+                                    </div>
+                                    <div class="buy-card__item">
+                                        <label for="expiration" class="buy-card__label">Expiration code</label>
+                                        <input type="number" name="expirationCode" id="expiration1" class="buy-card__input">
+                                        <input type="number" name="expirationCode" id="expiration2" class="buy-card__input">
+                                    </div>
+                                    <div class="buy-card__item">
+                                        <label for="cvc" class="buy-card__label">CVC</label>
+                                        <input type="number" name="cvc" id="cvc" class="buy-card__input">
+                                    </div>
+                                    <div class="buy-card__item">
+                                        <label for="cardholderName" class="buy-card__label">Cardholder name</label>
+                                        <input type="text" name="cardholderName" id="cardholderName" class="buy-card__input">
+                                    </div>
+                                    <div class="buy-card__item">
+                                        <label for="postalCode" class="buy-card__label">Postal code</label>
+                                        <input type="number" name="postalCode" id="postalCode" class="buy-card__input">
+                                    </div>
+                                    <div class="buy-card__item">
+                                        <label for="city" class="buy-card__label">City / Town</label>
+                                        <input type="text" name="city" id="city" class="buy-card__input">
+                                    </div>
+                                    <button type="submit" class="buy-card__button">Buy</button>
+                                    <span class="buy-card__price">$ 25.00</span>
+                                </form>
+                                <p class="buy-card__text">If you are live, work, attend school, or pay property taxes in New York State, you can get a $25 digital library card right now using this online form. Visitors to New York State can also use this form to apply for a temporary card.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="coffee">
+                <div class="coffee__container _container">
+                    <h2 class="coffee__title page__title">Coffee Shop</h2>
+                    <h3 class="coffee__subtitle page__subtitle">In our library, we have of cozy coffee shop, welcoming in customers with frothy cappuccinos and friendly conversation. You can get a favorite book and read in coffee shop. Our barista to cook you best coffee, and also you can try desserts from bakery.</h3>
+                    <div class="coffee__menu">
+                        <div class="menu__list">
+                            <h4 class="page__title menu__title">Coffee & Tea</h4>
+                            <div class="menu__item">
+                                <p class="menu__label">Cold Brew Coffee</p>
+                                <div class="menu__line"></div>
+                                <p class="menu__price">$3</p>
+                            </div>
+                            <div class="menu__item">
+                                <p class="menu__label">French Press Pot</p>
+                                <div class="menu__line"></div>
+                                <p class="menu__price">$5</p>
+                            </div>
+                            <div class="menu__item">
+                                <p class="menu__label">Espresso</p>
+                                <div class="menu__line"></div>
+                                <p class="menu__price">$2</p>
+                            </div>
+                            <div class="menu__item">
+                                <p class="menu__label">Capuccino</p>
+                                <div class="menu__line"></div>
+                                <p class="menu__price">$4</p>
+                            </div>
+                            <div class="menu__item">
+                                <p class="menu__label">Hot Tea</p>
+                                <div class="menu__line"></div>
+                                <p class="menu__price">$2</p>
+                            </div>
+                            <div class="menu__item">
+                                <p class="menu__label">Cold Tea</p>
+                                <div class="menu__line"></div>
+                                <p class="menu__price">$2</p>
+                            </div>
+                        </div>
+                        <div class="menu__list menu__list_aligned">
+                            <h4 class="page__title menu__title">Desserts & Cakes</h4>
+                            <div class="menu__item">
+                                <p class="menu__label">Forest Gateau</p>
+                                <div class="menu__line"></div>
+                                <p class="menu__price">$16</p>
+                            </div>
+                            <div class="menu__item">
+                                <p class="menu__label">Blue Moon</p>
+                                <div class="menu__line"></div>
+                                <p class="menu__price">$16</p>
+                            </div>
+                            <div class="menu__item">
+                                <p class="menu__label">Truffle Cake</p>
+                                <div class="menu__line"></div>
+                                <p class="menu__price">$15</p>
+                            </div>
+                            <div class="menu__item">
+                                <p class="menu__label">Chocalate Cake</p>
+                                <div class="menu__line"></div>
+                                <p class="menu__price">$18</p>
+                            </div>
+                            <div class="menu__item">
+                                <p class="menu__label">Poet's Dream Cake</p>
+                                <div class="menu__line"></div>
+                                <p class="menu__price">$16</p>
+                            </div>
+                            <div class="menu__item">
+                                <p class="menu__label">Pineapple Cake</p>
+                                <div class="menu__line"></div>
+                                <p class="menu__price">$14</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="contacts">
+                <div class="contacts__container _container">
+                    <h2 class="page__title contacts__title">Our Contacts</h2>
+                    <div class="contacts__body">
+                        <div class="contacts__info">
+                            <h4 class="info__label">For all Library inquiries:</h4>
+                            <p class="info__text">Please call<a class="info__link" href="tel:+6177302370">(617) 730-2370</a></p>
+                            <p class="info__text">For TTY service, please call<a class="info__link" href="tel:+6177302370">(617) 730-2370</a></p>
+                            <p class="info__text">Putterham Library:<a class="info__link" href="tel:+6177302385">(617) 730-2385</a></p>
+                            <h4 class="info__label">Senior Staff</h4>
+                            <p class="info__text">Library Director: <a href="mailto:AmandaHirst@gmail.com">Amanda Hirst</a></p>
+                        </div>
+                        <div class="contacts__image">
+                            <img src="./assets/images/map.jpg" alt="map">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="library-card">
+                <div class="library-card__container _container">
+                    <h2 class="page__title library-card__title">Digital Library Cards</h2>
+                    <div class="library-card__body">
+                        <div class="form">
+                            <h3 class="form__title">Find your Library card</h3>
+                            <form class="form__body" id="form" action="#">
+                                <div class="form__bg">
+                                    <h4 class="form__label">Brooklyn Public Library</h4>
+                                    <div class="form__item">
+                                        <input type="text" name="username" id="username" class="form__input" placeholder="Reader's name">
+                                    </div>
+                                    <div class="form__item">
+                                        <input type="text" name="cardNumber" id="cardNumber" class="form__input" placeholder="Card number">
+                                    </div>
+                                </div>
+                                <button type="submit" class="form__button">Check the card</button>
+                            </form>
+                        </div>
+                        <div class="library-card__login">
+                            <h4 class="login__title">Get a reader card</h4>
+                            <p class="login__text">You will be able to see a reader card after logging into account or you can register a new account</p>
+                            <div class="login__buttons">
+                                <button class="login__button" id="signupButton">Sign Up</button>
+                                <button class="login__button" id="loginButton">Log in</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        <footer class="footer">
+            <div class="footer__container _container">
+                <div class="footer__body">
+                    <div class="footer__links">
+                        <div class="location__link">
+                            <a href="https://goo.gl/maps/LcnTPumwdVXacMg77" target="_blank">286 Cadman Plaza, New York, NY 11238, United States</a>
+                        </div>
+                        <ul class="socials__list">
+                            <li class="socials__item"><a href="https://twitter.com/Twitter"><img src="./assets/icons/twitter.svg" alt="twitter"></a></li>
+                            <li class="socials__item"><a href="https://www.instagram.com/instagram/?hl=en"><img src="./assets/icons/instagram.svg" alt="instagram"></a></li>
+                            <li class="socials__item"><a href="https://www.facebook.com/zuck/"><img src="./assets/icons/facebook.svg" alt=""></a></li>
+                        </ul>
+                    </div>
+                    <div class="footer__schedule">
+                        <p class="schedule__text">Mon - Fri <br>08:00 am - 07:00 pm</p>
+                        <p class="schedule__text">Sat - Sun <br>10:00 am - 06:00 pm</p>
+                    </div>
+                </div>
+                <div class="footer__line"></div>
+                <div class="footer__aside">
+                    <div class="aside__text">2023</div>
+                    <div class="aside__text"><a href="https://rs.school/js-stage0/" class="aside__link">The Rolling Scopes School</a></div>
+                    <div class="aside__text"><a href="https://github.com/asselzhl" class="aside__link">Assel Zholaushybay</a></div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="./script.js"></script>
+</body>
+</html>
