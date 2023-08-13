@@ -445,9 +445,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 .pick__options > *:not(:last-child) {
     margin-right: 90px;
 }
-.options__item {
-
-}
 
 .options__input {
     display: none;
@@ -506,6 +503,14 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     padding: 15px 20px;
     position: relative;
     flex: 0 1 39%;
+}
+@media (max-width: 940px) {
+    .cards__wrapper {
+        justify-content: center;
+    }
+    .card__item {
+        flex: 0 1 74.5%;
+    }
 }
 .card__title { 
     color: #000000;
@@ -681,8 +686,17 @@ button[disabled]:hover:before {
     display: flex;
     justify-content: space-between;
 }
+
 .menu__list { 
     flex: 0 1 31.8%;
+}
+@media (max-width: 940px) {
+    .coffee__menu {
+        flex-wrap: wrap;
+    }
+    .menu__list {
+        flex: 0 1 57%;
+    }
 }
 .menu__list >*:not(:last-child) {
     margin-bottom: 40px;
@@ -692,6 +706,13 @@ button[disabled]:hover:before {
     flex-direction: column;
     align-items: end;
     flex: 0 1 35%;
+}
+@media (max-width: 940px) {
+    .menu__list_aligned {
+        margin-top: 40px;
+        flex: 0 1 63%;
+        margin-left: auto;
+    }
 }
 .menu__title { 
     color: #BB945F;
@@ -737,12 +758,18 @@ button[disabled]:hover:before {
 .contacts__body { 
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .contacts__info { 
     flex: 0 1 36%;
     margin-right: 150px;
 }
-
+@media (max-width: 940px) {
+    .contacts__info {
+        flex: 0 1 auto;
+        margin: 0px 0px 100px 0px;
+    }
+}
 .info__label { 
     color: #000000;
     font-size: 20px;
@@ -775,6 +802,12 @@ button[disabled]:hover:before {
 .contacts__image { 
     flex: 0 1 50%;
 }
+@media (max-width: 940px) {
+    .contacts__image {
+        flex: 0 1 auto;
+        margin: 0 auto;
+    }
+}
 .contacts__image img {
     max-width: 100%;
 }
@@ -788,10 +821,16 @@ button[disabled]:hover:before {
 .library-card__body { 
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 .form { 
     flex: 0 1 43%;
     margin-right: 200px;
+}
+@media (max-width: 940px) {
+    .form {
+        flex: 0 1 auto;
+    }
 }
 .form__title { 
     color: #000000;

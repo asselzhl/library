@@ -1,5 +1,5 @@
 'use strict'
-
+alert('Пожалуйста, проверьте после 16го августа, не успеваю 🥹')
 /*----------------------------------ABOUT_SLIDER----------------------------------*/
 const wrapper = document.querySelector('.slider__wrapper');
 const dots = document.querySelectorAll('.dot');
