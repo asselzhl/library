@@ -1,5 +1,4 @@
 'use strict'
-alert('Пожалуйста, проверьте после 16го августа, не успеваю 🥹')
 /*----------------------------------ABOUT_SLIDER----------------------------------*/
 const wrapper = document.querySelector('.slider__wrapper');
 const dots = document.querySelectorAll('.dot');
@@ -142,3 +141,7 @@ const winterWrapper = document.getElementById('winterWrapper');
 const springWrapper = document.getElementById('springWrapper');
 const summerWrapper = document.getElementById('summerWrapper');
 const autumnWrapper = document.getElementById('autumnWrapper');
+
+
+
+
