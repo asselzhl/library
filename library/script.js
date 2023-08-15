@@ -2,8 +2,7 @@
 /*----------------------------------ABOUT_SLIDER----------------------------------*/
 const wrapper = document.querySelector('.slider__wrapper');
 const dots = document.querySelectorAll('.dot');
-
-
+const dotsWrapper = document.querySelector('.about__dots');
 let activeDotnum = 0;
 
 dots.forEach ((dot, i) => {
@@ -26,6 +25,27 @@ dots.forEach ((dot, i) => {
     }
 });
 
+let div1 = document.createElement('div');
+div1.className = 'dot__wrapper';
+let button1 = document.createElement('button');
+button1.className = 'dot';    
+div1.prepend(button1);    
+let div2 = document.createElement('div');
+div2.className = 'dot__wrapper';
+let button2 = document.createElement('button');
+button2.className = 'dot';  
+div2.prepend(button2);    
+function addDots () {
+   
+        if (document.documentElement.clientWidth < 940) {
+            dotsWrapper.append(div1);
+            dotsWrapper.append(div2);
+        } else {
+           div1.remove();
+           div2.remove();
+        } 
+}
+window.addEventListener('resize', addDots);
 /*----------------------------------SCROLLTO----------------------------------*/
 const links = document.querySelectorAll('.navigation__link[data-goto]');
 
