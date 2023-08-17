@@ -390,7 +390,10 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     line-height: 200%;
     text-align: center;
 }
-
+.prev,
+.next {
+    display: none;
+}
 .about__slider { 
     overflow-x: hidden;
     width: 100%;
@@ -402,26 +405,18 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
         width: 84%;
         margin-left: auto;
         margin-right: auto;
+        display: flex;
+        align-items: center;
     }
-    .about__slider::before {
-        content: url(./assets/icons/leftArrow.svg);
+    .prev,
+    .next {
         display: block;
-        position: absolute;
-        top: 288.5px;
-        left: 0;
     }
-    .about__slider::after {
-        content: url(./assets/icons/rightArrow.svg);
-        display: block;
-        position: absolute;
-        top: 288.5px;
-        left: 590px;
-    }
-    .slider__wrapper {
-        margin-left: 82px;
+    .prev button,
+    .next button {
+        background-color: transparent;
     }
 }
-
 .slider__wrapper { 
     display: flex; 
     gap: 0px 25px;
@@ -433,6 +428,10 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 @media (max-width: 940px) {
     .slider__image {
         flex: 0 0 100%;
+    }
+    .slider__image img {
+        display: block;
+        margin: 0 auto;
     }
 }
 .slider__image img {
@@ -447,6 +446,16 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 .dot__wrapper {
     width: 25px;
     height: 25px;
+}
+.dot__wrapper:nth-child(4),
+.dot__wrapper:nth-child(5) {
+    display: none;
+}
+@media (max-width: 940px) {
+    .dot__wrapper:nth-child(4),
+    .dot__wrapper:nth-child(5) {
+    display: block;
+}
 }
 .dot__wrapper:hover {
     cursor: pointer;
