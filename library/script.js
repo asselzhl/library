@@ -3,49 +3,35 @@
 const wrapper = document.querySelector('.slider__wrapper');
 const dots = document.querySelectorAll('.dot');
 const dotsWrapper = document.querySelector('.about__dots');
-let activeDotnum = 0;
+
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+const prevButton = document.getElementById('prev__button');
+const nextButton = document.getElementById('next__button');
+const sliderImage = document.querySelectorAll('.slider__image');
+let currentIndex = 0;
+
 
 dots.forEach ((dot, i) => {
     dot.setAttribute('data-num', i);
-
     dot.addEventListener('click', changeClientWidth);
 
     function changeClientWidth (e) {
         let clickedDotNum = e.target.dataset.num;
-        if (clickedDotNum == activeDotnum) {
+        if (clickedDotNum == currentIndex) {
             return;
         } else {
+            
             let imageWidth = wrapper.firstElementChild.clientWidth;
             let pixels = (-imageWidth * clickedDotNum) - (clickedDotNum * 25)
             wrapper.style.transform = 'translateX(' + pixels + 'px)';
-            dots[activeDotnum].classList.remove('active');
+            dots[currentIndex].classList.remove('active');
             dots[clickedDotNum].classList.add('active');
-            activeDotnum = clickedDotNum;
+            currentIndex = clickedDotNum;
         }
     }
 });
 
-let div1 = document.createElement('div');
-div1.className = 'dot__wrapper';
-let button1 = document.createElement('button');
-button1.className = 'dot';    
-div1.prepend(button1);    
-let div2 = document.createElement('div');
-div2.className = 'dot__wrapper';
-let button2 = document.createElement('button');
-button2.className = 'dot';  
-div2.prepend(button2);    
-function addDots () {
-   
-        if (document.documentElement.clientWidth < 940) {
-            dotsWrapper.append(div1);
-            dotsWrapper.append(div2);
-        } else {
-           div1.remove();
-           div2.remove();
-        } 
-}
-window.addEventListener('resize', addDots);
 /*----------------------------------SCROLLTO----------------------------------*/
 const links = document.querySelectorAll('.navigation__link[data-goto]');
 
