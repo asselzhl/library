@@ -480,6 +480,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 .favorites__title { 
     margin-bottom: 61px;
 }
+
 .favorites__pick { 
     margin-bottom: 40px;
 }
@@ -533,16 +534,32 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     border-radius: 50%;
     transform: scale(0);
 }
-#springWrapper,
-#summerWrapper,
-#autumnWrapper {
-    display: none;
+.favorites__cards {
+    position: relative;
 }
 .cards__wrapper { 
     display: flex;
     flex-wrap: wrap;
     gap: 40px 260px;
+	visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+    width: 100%;
 }
+.cards__wrapper:first-child {
+    visibility: visible;
+}
+.faded-out {
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.5s linear;
+ }
+.faded-in {
+	opacity: 1;
+	visibility: visible;
+	transition: 0.5s linear 0.5s;
+ }
 @media (max-width: 1215px) {
     .cards__wrapper {
         gap: 40px 200px;
@@ -745,7 +762,7 @@ button[disabled]:hover:before {
         flex-wrap: wrap;
     }
     .menu__list {
-        flex: 0 1 57%;
+        flex: 0 1 auto;
     }
 }
 .menu__list >*:not(:last-child) {
@@ -760,7 +777,7 @@ button[disabled]:hover:before {
 @media (max-width: 940px) {
     .menu__list_aligned {
         margin-top: 40px;
-        flex: 0 1 63%;
+        flex: 0 1 auto;
         margin-left: auto;
     }
 }

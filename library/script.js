@@ -10,28 +10,78 @@ const prevButton = document.getElementById('prev__button');
 const nextButton = document.getElementById('next__button');
 const sliderImage = document.querySelectorAll('.slider__image');
 let currentIndex = 0;
-
-
-dots.forEach ((dot, i) => {
-    dot.setAttribute('data-num', i);
-    dot.addEventListener('click', changeClientWidth);
-
-    function changeClientWidth (e) {
-        let clickedDotNum = e.target.dataset.num;
-        if (clickedDotNum == currentIndex) {
-            return;
-        } else {
-            
-            let imageWidth = wrapper.firstElementChild.clientWidth;
-            let pixels = (-imageWidth * clickedDotNum) - (clickedDotNum * 25)
-            wrapper.style.transform = 'translateX(' + pixels + 'px)';
-            dots[currentIndex].classList.remove('active');
-            dots[clickedDotNum].classList.add('active');
-            currentIndex = clickedDotNum;
-        }
+function dotControl (e) {
+    let clickedDotNum = e.target.dataset.num;
+    if (clickedDotNum == currentIndex) {
+        return; 
+    } else {
+        removeClass();
+        currentIndex = clickedDotNum;
+        changeClientWidth();
+        addClass();
     }
+}
+dots.forEach((dot, i) => {
+    dot.setAttribute('data-num', i);
+    dot.addEventListener('click', dotControl);
 });
 
+function nextSlide () {
+    if (currentIndex == sliderImage.length - 1) {
+        return;
+    } else {
+        removeClass();
+        currentIndex++;
+        changeClientWidth();
+        addClass();
+    }
+}
+function prevSlide () {
+    if (currentIndex == 0) {
+        return;
+    } else {
+        removeClass();
+        currentIndex--;
+        changeClientWidth();
+        addClass();
+    }
+}
+nextButton.addEventListener('click', nextSlide);
+prevButton.addEventListener('click', prevSlide);
+
+function changeClientWidth () {
+    let imageWidth = wrapper.firstElementChild.clientWidth;
+    let pixels = (-imageWidth * currentIndex) - (currentIndex * 25);
+    wrapper.style.transform = 'translateX(' + pixels + 'px)';
+}
+function removeClass () {
+    dots[currentIndex].classList.remove('active');
+}
+function addClass () {
+    dots[currentIndex].classList.add('active');
+}
+
+
+/*----------------------------------FAVORITES-SLIDER----------------------------------*/
+const pickerButtons = document.querySelectorAll('.options__input');
+const seasonBlocks = document.querySelectorAll('.cards__wrapper');
+let index = 0;
+let newIndex = 0;
+pickerButtons.forEach((button, i) => {
+  button.setAttribute('data-num', i)
+  button.addEventListener('click', function () {
+    seasonBlocks[index].classList.add("faded-out");
+    seasonBlocks[index].classList.remove("faded-in");
+    if (this.checked) {
+      newIndex = this.dataset.num;
+      index = +newIndex;
+    }
+    seasonBlocks[index].classList.add("faded-in");
+    seasonBlocks[index].classList.remove("faded-out"); 
+  })
+})
+const favoritesCards = document.querySelector('.favorites__cards');
+favoritesCards.style.paddingBottom = favoritesCards.firstElementChild.clientHeight + 'px';
 /*----------------------------------SCROLLTO----------------------------------*/
 const links = document.querySelectorAll('.navigation__link[data-goto]');
 
