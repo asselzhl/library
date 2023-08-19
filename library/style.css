@@ -226,6 +226,9 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     display: block;
     width: 100%;
 }
+.error {
+    border: 1px solid red;
+}
 .form-popup__button { 
     color: #0C0C0E;
     font-size: 10px;
@@ -1017,6 +1020,7 @@ button[disabled]:hover:before {
         text-align: center;
     }
 }
+.form-popup__button,
 .login__button { 
     color: #0C0C0E;
     font-size: 10px;
@@ -1032,9 +1036,11 @@ button[disabled]:hover:before {
     z-index: 1;
     transition: all 500ms ease;
 }
+.form-popup__button:hover,
 .login__button:hover {
     border: 1px solid #BB945F;
 }
+.form-popup__button::before,
 .login__button::before {
     content: "";
     position: absolute;
@@ -1046,12 +1052,14 @@ button[disabled]:hover:before {
     transition: all 500ms ease;
     z-index: -1;
 }
+.form-popup__button:hover::before,
 .login__button:hover::before {
     width: 100%;
 }
 .login__buttons > *:not(:last-child) {
     margin-right: 20px;
 }
+
 /*----------------------------------FOOTER----------------------------------*/
 .footer { 
     background: #0C0C0E;

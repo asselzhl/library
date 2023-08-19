@@ -116,6 +116,9 @@ const navigation = document.querySelector('.navigation');
 menuIcon.addEventListener('click', function (e) {
     menuIcon.classList.toggle('_active');
     navigation.classList.toggle('_active');
+    if (dropMenu.classList.contains('_active')) {
+        dropMenu.classList.remove('_active');
+    }
 })
 
 /*----------------------------------DROP_MENU----------------------------------*/
@@ -123,7 +126,12 @@ const userIcon = document.querySelector('.header__user');
 const dropMenu = document.querySelector('.drop__menu');
 userIcon.addEventListener('click', function (e) {
     dropMenu.classList.toggle('_active');
+    if (menuIcon.classList.contains('_active')) {
+        menuIcon.classList.remove('_active');
+        navigation.classList.remove('_active');
+    }
 });
+
 /*----------------------------------MODAL----------------------------------*/
 const dropLogin = document.getElementById('dropLogin');
 const loginModal = document.getElementById('loginModal');
@@ -189,15 +197,37 @@ checkButton.addEventListener('submit', e => {
 
 
 
+/*----------------------------------REGISTER-VALIDATION----------------------------------*/
+const formRegister = document.getElementById('registerForm');
+const inputFields = document.querySelectorAll('.register__input');
+const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+function validate (e) {
+  
+  inputFields.forEach(field => {
+    if ((field.value == '') || (field.type == 'password' && field.value.length < 8) || (field.name == 'registerEmail' && !(emailRegex.test(field.value)))) {
+      field.classList.add('error');
+      return false;
+    } 
+    field.classList.remove('error');
+    return true;
+  })
+  e.preventDefault();
+  
+}
 
-/*----------------------------------FAVORITES-PICKER----------------------------------*/
+formRegister.addEventListener('submit', validate);
 
-const radioButtons = document.querySelectorAll('input[type=radio]');
-const winterWrapper = document.getElementById('winterWrapper');
-const springWrapper = document.getElementById('springWrapper');
-const summerWrapper = document.getElementById('summerWrapper');
-const autumnWrapper = document.getElementById('autumnWrapper');
 
+function getCardNumber(min, max) {
+    let lengthOfNumber = 9;
+    let arrayOfNums = [];
+    for (let i = 0; i < lengthOfNumber; i++) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        arrayOfNums.push((Math.floor(Math.random() * (max - min + 1) + min)).toString(16));
+    }
+    return arrayOfNums.join('').toUpperCase();
+}
 
 
 
