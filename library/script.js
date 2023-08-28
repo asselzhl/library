@@ -1,32 +1,93 @@
 'use strict'
-
+const forms = document.querySelectorAll('form');
+forms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+    })  
+})
 /*----------------------------------ABOUT_SLIDER----------------------------------*/
 const wrapper = document.querySelector('.slider__wrapper');
 const dots = document.querySelectorAll('.dot');
+const dotsWrapper = document.querySelector('.about__dots');
 
-
-let activeDotnum = 0;
-
-dots.forEach ((dot, i) => {
-    dot.setAttribute('data-num', i);
-
-    dot.addEventListener('click', changeClientWidth);
-
-    function changeClientWidth (e) {
-        let clickedDotNum = e.target.dataset.num;
-        if (clickedDotNum == activeDotnum) {
-            return;
-        } else {
-            let imageWidth = wrapper.firstElementChild.clientWidth;
-            let pixels = (-imageWidth * clickedDotNum) - (clickedDotNum * 25)
-            wrapper.style.transform = 'translateX(' + pixels + 'px)';
-            dots[activeDotnum].classList.remove('active');
-            dots[clickedDotNum].classList.add('active');
-            activeDotnum = clickedDotNum;
-        }
+const prev = document.querySelector('.prev');
+const next = document.querySelector('.next');
+const prevButton = document.getElementById('prev__button');
+const nextButton = document.getElementById('next__button');
+const sliderImage = document.querySelectorAll('.slider__image');
+let currentIndex = 0;
+function dotControl (e) {
+    let clickedDotNum = e.target.dataset.num;
+    if (clickedDotNum == currentIndex) {
+        return; 
+    } else {
+        removeClass();
+        currentIndex = clickedDotNum;
+        changeClientWidth();
+        addClass();
     }
+}
+dots.forEach((dot, i) => {
+    dot.setAttribute('data-num', i);
+    dot.addEventListener('click', dotControl);
 });
 
+function nextSlide () {
+    if (currentIndex == sliderImage.length - 1) {
+        return;
+    } else {
+        removeClass();
+        currentIndex++;
+        changeClientWidth();
+        addClass();
+    }
+}
+function prevSlide () {
+    if (currentIndex == 0) {
+        return;
+    } else {
+        removeClass();
+        currentIndex--;
+        changeClientWidth();
+        addClass();
+    }
+}
+nextButton.addEventListener('click', nextSlide);
+prevButton.addEventListener('click', prevSlide);
+
+function changeClientWidth () {
+    let imageWidth = wrapper.firstElementChild.clientWidth;
+    let pixels = (-imageWidth * currentIndex) - (currentIndex * 25);
+    wrapper.style.transform = 'translateX(' + pixels + 'px)';
+}
+function removeClass () {
+    dots[currentIndex].classList.remove('active');
+}
+function addClass () {
+    dots[currentIndex].classList.add('active');
+}
+
+
+/*----------------------------------FAVORITES-SLIDER----------------------------------*/
+const pickerButtons = document.querySelectorAll('.options__input');
+const seasonBlocks = document.querySelectorAll('.cards__wrapper');
+let index = 0;
+let newIndex = 0;
+pickerButtons.forEach((button, i) => {
+  button.setAttribute('data-num', i)
+  button.addEventListener('click', function () {
+    seasonBlocks[index].classList.add("faded-out");
+    seasonBlocks[index].classList.remove("faded-in");
+    if (this.checked) {
+      newIndex = this.dataset.num;
+      index = +newIndex;
+    }
+    seasonBlocks[index].classList.add("faded-in");
+    seasonBlocks[index].classList.remove("faded-out"); 
+  })
+})
+const favoritesCards = document.querySelector('.favorites__cards');
+favoritesCards.style.paddingBottom = favoritesCards.firstElementChild.clientHeight + 'px';
 /*----------------------------------SCROLLTO----------------------------------*/
 const links = document.querySelectorAll('.navigation__link[data-goto]');
 
@@ -51,9 +112,12 @@ main.addEventListener ('click', function (e) {
         menuIcon.classList.remove('_active');
         navigation.classList.remove('_active');
     }
-    if (dropMenu.classList.contains('_active')) {
-        dropMenu.classList.remove('_active')
-    }
+    if (dropMenuNoAuth.classList.contains('_active')) {
+        dropMenuNoAuth.classList.remove('_active')
+    } 
+    if (dropMenuWithAuth.classList.contains('_active')) {
+        dropMenuWithAuth.classList.remove('_active')
+    } 
 })
 /*----------------------------------BURGER_MENU----------------------------------*/
 const menuIcon = document.querySelector('.menu__icon');
@@ -61,14 +125,27 @@ const navigation = document.querySelector('.navigation');
 menuIcon.addEventListener('click', function (e) {
     menuIcon.classList.toggle('_active');
     navigation.classList.toggle('_active');
+    if (dropMenuNoAuth.classList.contains('_active')) {
+        dropMenuNoAuth.classList.remove('_active');
+    }
 })
 
 /*----------------------------------DROP_MENU----------------------------------*/
 const userIcon = document.querySelector('.header__user');
-const dropMenu = document.querySelector('.drop__menu');
+const dropMenuNoAuth = document.getElementById('dropMenuNoAuth');
+const dropMenuWithAuth = document.getElementById('dropMenuWithAuth');
 userIcon.addEventListener('click', function (e) {
-    dropMenu.classList.toggle('_active');
+    if (userIcon.getAttribute('auth') == 'true') {
+        dropMenuWithAuth.classList.toggle('_active');
+    } else {
+        dropMenuNoAuth.classList.toggle('_active');
+    }
+    if (menuIcon.classList.contains('_active')) {
+        menuIcon.classList.remove('_active');
+        navigation.classList.remove('_active');
+    }
 });
+
 /*----------------------------------MODAL----------------------------------*/
 const dropLogin = document.getElementById('dropLogin');
 const loginModal = document.getElementById('loginModal');
@@ -77,9 +154,15 @@ const registerModal = document.getElementById('registerModal');
 const closeButtons = document.querySelectorAll('.form-popup__close');
 dropLogin.addEventListener ('click', function (e) {
     loginModal.classList.add('_active');
+    if (loginModal.classList.contains('_active')) {
+        dropMenuNoAuth.classList.remove('_active');
+    }
 });
 dropRegister.addEventListener('click', function (e) {
     registerModal.classList.add('_active');
+    if (registerModal.classList.contains('_active')) {
+        dropMenuNoAuth.classList.remove('_active');
+    }
 })
 window.addEventListener('click', function (e) {
     if (e.target === loginModal) {
@@ -88,6 +171,8 @@ window.addEventListener('click', function (e) {
         registerModal.classList.remove('_active');
     } else if (e.target === buyCardModal) {
         buyCardModal.classList.remove('_active');
+    } else if (e.target === profileModal) {
+        profileModal.classList.remove('_active');
     }
 });
 
@@ -104,6 +189,7 @@ signupButton.addEventListener('click', function (e) {
 });
 loginButton.addEventListener('click', function (e) {
     loginModal.classList.add('_active');
+    
 });
 
 /*----------------------------------BUY-CARD__MODAL----------------------------------*/
@@ -112,7 +198,11 @@ const buyCardModal = document.querySelector('.modal__buy-card');
 const buyCardClose = document.querySelector('.buy-card__close');
 for (let buyButton of buyButtons) {
     buyButton.addEventListener('click', function (e) {
-        buyCardModal.classList.add('_active');
+        if (userIcon.getAttribute('auth') == 'true') {
+            buyCardModal.classList.add('_active');
+        } else {
+            loginModal.classList.add('_active');
+        }
     })
 };
 buyCardClose.addEventListener('click', function (e) {
@@ -134,11 +224,105 @@ checkButton.addEventListener('submit', e => {
 
 
 
+/*----------------------------------VALIDATION----------------------------------*/
+const formRegister = document.getElementById('registerForm');
+const registerInputs = document.querySelectorAll('.register__input');
+const registerButton = document.querySelector('.register__button');
+let authCount = 0; 
+userIcon.setAttribute('auth', false);
 
-/*----------------------------------FAVORITES-PICKER----------------------------------*/
 
-const radioButtons = document.querySelectorAll('input[type=radio]');
-const winterWrapper = document.getElementById('winterWrapper');
-const springWrapper = document.getElementById('springWrapper');
-const summerWrapper = document.getElementById('summerWrapper');
-const autumnWrapper = document.getElementById('autumnWrapper');
+
+let cardNumber = getCardNumber(1, 15);
+
+formRegister.addEventListener('submit', () => {
+    registerInputs.forEach((field) => {
+        localStorage.setItem(field.name, field.value);
+        localStorage.setItem('cardNumber', cardNumber);
+    })
+    userIcon.setAttribute('auth', true);
+    registerModal.classList.remove('_active');
+    if (userIcon.getAttribute('auth') == 'true') {
+        changeUserIcon();
+        dropTitleWithAuth.innerHTML = localStorage.getItem('cardNumber');
+    } 
+})
+
+
+
+function getCardNumber(min, max) {
+    let lengthOfNumber = 9;
+    let arrayOfNums = [];
+    for (let i = 0; i < lengthOfNumber; i++) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        arrayOfNums.push((Math.floor(Math.random() * (max - min + 1) + min)).toString(16));
+    }
+    return arrayOfNums.join('').toUpperCase();
+}
+
+function changeUserIcon () {
+    let firstName = localStorage.getItem('firstName');
+    let lastName = localStorage.getItem('lastName');
+    let newIcon = firstName[0] + lastName[0];
+    userIcon.innerHTML = newIcon.toUpperCase();
+    userIcon.style.background = '#FFF';
+    userIcon.style.padding = '4.5px';
+    userIcon.setAttribute('title', firstName + ' ' + lastName);
+}
+const dropTitleWithAuth = document.getElementById('dropTitleWithAuth');
+const logOut = document.getElementById('logOut');
+
+
+logOut.addEventListener('click', () => {
+    userIcon.setAttribute('auth', false);
+    userIcon.innerHTML = '<img src="./assets/icons/userIcon.svg" alt="">';
+    userIcon.removeAttribute('style');
+    dropMenuWithAuth.classList.remove('_active');
+})
+console.log(localStorage);
+
+let loginInfo = [localStorage.getItem('cardNumber'), localStorage.getItem('registerEmail')];
+const loginEmail = document.getElementById('loginEmail');
+const loginPassword = document.getElementById('loginPassword');
+const loginForm = document.getElementById('loginForm');
+const popupLoginButton = document.getElementById('popupLoginButton');
+loginForm.addEventListener('submit', () => {
+    if (loginInfo.includes(loginEmail.value)) {
+        loginEmail.classList.remove('error');
+    } else {
+        loginEmail.classList.add('error');
+    }
+    if (loginPassword.value == localStorage.getItem('registerPassword')) {
+        loginPassword.classList.remove('error');
+    } else {
+        loginPassword.classList.add('error');
+    }
+    if (!(loginEmail.classList.contains('error') && loginPassword.classList.contains('error'))) {
+        userIcon.setAttribute('auth', true);
+        loginModal.classList.remove('_active');
+        if (userIcon.getAttribute('auth') == 'true') {
+            changeUserIcon();
+            dropTitleWithAuth.innerHTML = localStorage.getItem('cardNumber');
+            profileCardNum.innerHTML = localStorage.getItem('cardNumber');
+        } 
+    }
+})
+
+const profileCardNum = document.getElementById('profileCardNum');
+const profileModal = document.getElementById('profileModal');
+const profileButton = document.getElementById('myProfile');
+const profileClose = document.querySelector('.close__button');
+profileButton.addEventListener('click', () => {
+    profileModal.classList.add('_active');
+    dropMenuWithAuth.classList.remove('_active');
+})
+profileClose.addEventListener('click', () => {
+    profileModal.classList.remove('_active');
+})
+
+
+const copyButton = document.querySelector('.copy__button');
+copyButton.addEventListener('click', () => {
+  navigator.clipboard.writeText(profileCardNum.innerText);
+})
