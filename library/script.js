@@ -1,4 +1,10 @@
 'use strict'
+const forms = document.querySelectorAll('form');
+forms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+    })  
+})
 /*----------------------------------ABOUT_SLIDER----------------------------------*/
 const wrapper = document.querySelector('.slider__wrapper');
 const dots = document.querySelectorAll('.dot');
@@ -106,9 +112,12 @@ main.addEventListener ('click', function (e) {
         menuIcon.classList.remove('_active');
         navigation.classList.remove('_active');
     }
-    if (dropMenu.classList.contains('_active')) {
-        dropMenu.classList.remove('_active')
-    }
+    if (dropMenuNoAuth.classList.contains('_active')) {
+        dropMenuNoAuth.classList.remove('_active')
+    } 
+    if (dropMenuWithAuth.classList.contains('_active')) {
+        dropMenuWithAuth.classList.remove('_active')
+    } 
 })
 /*----------------------------------BURGER_MENU----------------------------------*/
 const menuIcon = document.querySelector('.menu__icon');
@@ -116,16 +125,21 @@ const navigation = document.querySelector('.navigation');
 menuIcon.addEventListener('click', function (e) {
     menuIcon.classList.toggle('_active');
     navigation.classList.toggle('_active');
-    if (dropMenu.classList.contains('_active')) {
-        dropMenu.classList.remove('_active');
+    if (dropMenuNoAuth.classList.contains('_active')) {
+        dropMenuNoAuth.classList.remove('_active');
     }
 })
 
 /*----------------------------------DROP_MENU----------------------------------*/
 const userIcon = document.querySelector('.header__user');
-const dropMenu = document.querySelector('.drop__menu');
+const dropMenuNoAuth = document.getElementById('dropMenuNoAuth');
+const dropMenuWithAuth = document.getElementById('dropMenuWithAuth');
 userIcon.addEventListener('click', function (e) {
-    dropMenu.classList.toggle('_active');
+    if (userIcon.getAttribute('auth') == 'true') {
+        dropMenuWithAuth.classList.toggle('_active');
+    } else {
+        dropMenuNoAuth.classList.toggle('_active');
+    }
     if (menuIcon.classList.contains('_active')) {
         menuIcon.classList.remove('_active');
         navigation.classList.remove('_active');
@@ -140,9 +154,15 @@ const registerModal = document.getElementById('registerModal');
 const closeButtons = document.querySelectorAll('.form-popup__close');
 dropLogin.addEventListener ('click', function (e) {
     loginModal.classList.add('_active');
+    if (loginModal.classList.contains('_active')) {
+        dropMenuNoAuth.classList.remove('_active');
+    }
 });
 dropRegister.addEventListener('click', function (e) {
     registerModal.classList.add('_active');
+    if (registerModal.classList.contains('_active')) {
+        dropMenuNoAuth.classList.remove('_active');
+    }
 })
 window.addEventListener('click', function (e) {
     if (e.target === loginModal) {
@@ -151,6 +171,8 @@ window.addEventListener('click', function (e) {
         registerModal.classList.remove('_active');
     } else if (e.target === buyCardModal) {
         buyCardModal.classList.remove('_active');
+    } else if (e.target === profileModal) {
+        profileModal.classList.remove('_active');
     }
 });
 
@@ -167,6 +189,7 @@ signupButton.addEventListener('click', function (e) {
 });
 loginButton.addEventListener('click', function (e) {
     loginModal.classList.add('_active');
+    
 });
 
 /*----------------------------------BUY-CARD__MODAL----------------------------------*/
@@ -175,7 +198,11 @@ const buyCardModal = document.querySelector('.modal__buy-card');
 const buyCardClose = document.querySelector('.buy-card__close');
 for (let buyButton of buyButtons) {
     buyButton.addEventListener('click', function (e) {
-        buyCardModal.classList.add('_active');
+        if (userIcon.getAttribute('auth') == 'true') {
+            buyCardModal.classList.add('_active');
+        } else {
+            loginModal.classList.add('_active');
+        }
     })
 };
 buyCardClose.addEventListener('click', function (e) {
@@ -197,25 +224,30 @@ checkButton.addEventListener('submit', e => {
 
 
 
-/*----------------------------------REGISTER-VALIDATION----------------------------------*/
+/*----------------------------------VALIDATION----------------------------------*/
 const formRegister = document.getElementById('registerForm');
-const inputFields = document.querySelectorAll('.register__input');
-const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-function validate (e) {
-  
-  inputFields.forEach(field => {
-    if ((field.value == '') || (field.type == 'password' && field.value.length < 8) || (field.name == 'registerEmail' && !(emailRegex.test(field.value)))) {
-      field.classList.add('error');
-      return false;
-    } 
-    field.classList.remove('error');
-    return true;
-  })
-  e.preventDefault();
-  
-}
+const registerInputs = document.querySelectorAll('.register__input');
+const registerButton = document.querySelector('.register__button');
+let authCount = 0; 
+userIcon.setAttribute('auth', false);
 
-formRegister.addEventListener('submit', validate);
+
+
+let cardNumber = getCardNumber(1, 15);
+
+formRegister.addEventListener('submit', () => {
+    registerInputs.forEach((field) => {
+        localStorage.setItem(field.name, field.value);
+        localStorage.setItem('cardNumber', cardNumber);
+    })
+    userIcon.setAttribute('auth', true);
+    registerModal.classList.remove('_active');
+    if (userIcon.getAttribute('auth') == 'true') {
+        changeUserIcon();
+        dropTitleWithAuth.innerHTML = localStorage.getItem('cardNumber');
+    } 
+})
+
 
 
 function getCardNumber(min, max) {
@@ -229,5 +261,68 @@ function getCardNumber(min, max) {
     return arrayOfNums.join('').toUpperCase();
 }
 
+function changeUserIcon () {
+    let firstName = localStorage.getItem('firstName');
+    let lastName = localStorage.getItem('lastName');
+    let newIcon = firstName[0] + lastName[0];
+    userIcon.innerHTML = newIcon.toUpperCase();
+    userIcon.style.background = '#FFF';
+    userIcon.style.padding = '4.5px';
+    userIcon.setAttribute('title', firstName + ' ' + lastName);
+}
+const dropTitleWithAuth = document.getElementById('dropTitleWithAuth');
+const logOut = document.getElementById('logOut');
 
 
+logOut.addEventListener('click', () => {
+    userIcon.setAttribute('auth', false);
+    userIcon.innerHTML = '<img src="./assets/icons/userIcon.svg" alt="">';
+    userIcon.removeAttribute('style');
+    dropMenuWithAuth.classList.remove('_active');
+})
+console.log(localStorage);
+
+let loginInfo = [localStorage.getItem('cardNumber'), localStorage.getItem('registerEmail')];
+const loginEmail = document.getElementById('loginEmail');
+const loginPassword = document.getElementById('loginPassword');
+const loginForm = document.getElementById('loginForm');
+const popupLoginButton = document.getElementById('popupLoginButton');
+loginForm.addEventListener('submit', () => {
+    if (loginInfo.includes(loginEmail.value)) {
+        loginEmail.classList.remove('error');
+    } else {
+        loginEmail.classList.add('error');
+    }
+    if (loginPassword.value == localStorage.getItem('registerPassword')) {
+        loginPassword.classList.remove('error');
+    } else {
+        loginPassword.classList.add('error');
+    }
+    if (!(loginEmail.classList.contains('error') && loginPassword.classList.contains('error'))) {
+        userIcon.setAttribute('auth', true);
+        loginModal.classList.remove('_active');
+        if (userIcon.getAttribute('auth') == 'true') {
+            changeUserIcon();
+            dropTitleWithAuth.innerHTML = localStorage.getItem('cardNumber');
+            profileCardNum.innerHTML = localStorage.getItem('cardNumber');
+        } 
+    }
+})
+
+const profileCardNum = document.getElementById('profileCardNum');
+const profileModal = document.getElementById('profileModal');
+const profileButton = document.getElementById('myProfile');
+const profileClose = document.querySelector('.close__button');
+profileButton.addEventListener('click', () => {
+    profileModal.classList.add('_active');
+    dropMenuWithAuth.classList.remove('_active');
+})
+profileClose.addEventListener('click', () => {
+    profileModal.classList.remove('_active');
+})
+
+
+const copyButton = document.querySelector('.copy__button');
+copyButton.addEventListener('click', () => {
+  navigator.clipboard.writeText(profileCardNum.innerText);
+})

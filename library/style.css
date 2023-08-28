@@ -90,6 +90,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 .header__links {
     display: flex;
     margin-left: 50px;
+    align-items: center;
 }
 .navigation { 
     margin-right: 40px;
@@ -127,7 +128,14 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     background: transparent;
     display: inline-block;
     z-index: 10;
+    color: #BB945F;
+    font-family: Inter;
+    font-size: 15px;
+    line-height: 134%;
+    border-radius: 50%;
+    height: 28px;
 }
+
 .menu__icon {
     display: none;
 }
@@ -252,6 +260,117 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
     text-decoration: underline;
     display: inline-block;
     margin-left: 10px;
+}
+.profile__wrapper { 
+	display: flex;
+	width: 600px;
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.close__button {
+	position: absolute;
+	top: 25px;
+	right: 25px;
+    background: transparent;
+}
+.profile__aside { 
+	background-color: #0C0C0E;
+	width: 170px;
+	display: flex;
+	flex-direction: column;	
+	gap: 15px;
+	align-items: center;
+	justify-content: center;
+}
+.profile__image { 
+	color: #BB945F;
+	text-align: center;
+	font-size: 20px;
+	background-color: #FFFFFF;
+	width: 80px;
+	height: 80px;
+}
+.profile__image img {
+	max-width: 100%;
+}
+.profile__name { 
+	background-color: #FFFFFF;
+	font-size: 20px;
+	text-transform: capitalize;
+	display: inline-block;
+	padding: 5px 15px;
+}
+.profile__body { 
+	padding: 40px 60px 40px 20px;
+	width: 430px;
+}
+.profile__title { 
+	font-family: Forum;
+	font-size: 40px;
+	line-height: 50%;
+	letter-spacing: 0.8px;
+	text-transform: uppercase;
+	margin-bottom: 40px;
+}
+.profile__info { 
+	display: flex;
+	gap: 0px 20px;
+	margin-bottom: 20px;
+}
+.info__item { 
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+}
+.info__title { 
+	font-size: 20px;
+	letter-spacing: 0.4px;
+}
+.info__icon { }
+.info__counts { 
+	font-size: 10px;
+	line-height: 200%;
+	letter-spacing: 0.2px;
+}
+.profile__rented-books { 
+	margin-bottom: 40px;
+}
+.rented-books__title { 
+	color: #0C0C0E;
+	font-size: 25px;
+	line-height: 80%;
+	margin-bottom: 30px;
+}
+.rented-books__list { }
+.rented-books__item { 
+	font-size: 20px;
+	letter-spacing: 2px;
+	text-transform: capitalize;
+	list-style: inside;
+}
+.rented-books__item:not(:last-child) {
+	margin-bottom: 10px;
+}
+.profile__card-number {
+	display: flex;
+	gap: 15px;
+}
+.profile__card-number p { 
+	color: #0C0C0E;
+	font-size: 20px;
+}
+.profile__card-number span {
+	font-size: 20px;
+	color: #BB945F;
+	align-self: flex-end;
+}
+.copy__button {
+	background: transparent;
+	align-self: flex-end;
 }
 @media (max-width: 1025px) {
     .burger__menu {
