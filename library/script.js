@@ -196,15 +196,17 @@ loginButton.addEventListener('click', function (e) {
 const buyButtons = document.querySelectorAll('.card__button');
 const buyCardModal = document.querySelector('.modal__buy-card');
 const buyCardClose = document.querySelector('.buy-card__close');
-for (let buyButton of buyButtons) {
-    buyButton.addEventListener('click', function (e) {
+buyButtons.forEach((buyButton, i) => {
+    buyButton.setAttribute('data-num', i);
+    buyButton.addEventListener('click', () => {
         if (userIcon.getAttribute('auth') == 'true') {
             buyCardModal.classList.add('_active');
         } else {
             loginModal.classList.add('_active');
         }
     })
-};
+})
+
 buyCardClose.addEventListener('click', function (e) {
     buyCardModal.classList.remove('_active');
 });
@@ -212,15 +214,7 @@ buyCardClose.addEventListener('click', function (e) {
 
 
 
-const checkButton = document.querySelector('.form__button');
-const loginTitle = document.querySelector('.login__title');
-const loginText = document.querySelector('.login__text');
-checkButton.addEventListener('submit', e => {
-    e.preventDefault ();
 
-    loginTitle.innerHTML = 'Visit your profile';
-    loginText.innerHTML = 'With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.'
-})
 
 
 
@@ -245,6 +239,8 @@ formRegister.addEventListener('submit', () => {
     if (userIcon.getAttribute('auth') == 'true') {
         changeUserIcon();
         dropTitleWithAuth.innerHTML = localStorage.getItem('cardNumber');
+        authCount++;
+        
     } 
 })
 
@@ -305,6 +301,9 @@ loginForm.addEventListener('submit', () => {
             changeUserIcon();
             dropTitleWithAuth.innerHTML = localStorage.getItem('cardNumber');
             profileCardNum.innerHTML = localStorage.getItem('cardNumber');
+            profileName.innerHTML = localStorage.getItem('firstName') + ' ' + localStorage.getItem('lastName');
+            authCount++;
+            localStorage.setItem('visitsCount', authCount);
         } 
     }
 })
@@ -313,6 +312,7 @@ const profileCardNum = document.getElementById('profileCardNum');
 const profileModal = document.getElementById('profileModal');
 const profileButton = document.getElementById('myProfile');
 const profileClose = document.querySelector('.close__button');
+const profileName = document.querySelector('.profile__name');
 profileButton.addEventListener('click', () => {
     profileModal.classList.add('_active');
     dropMenuWithAuth.classList.remove('_active');
@@ -326,3 +326,41 @@ const copyButton = document.querySelector('.copy__button');
 copyButton.addEventListener('click', () => {
   navigator.clipboard.writeText(profileCardNum.innerText);
 })
+const visitsCount = document.getElementById('visitsCount');
+function changeVisitsCount () {
+    visitsCount.innerHTML = localStorage.getItem('visitsCount'); 
+    setTimeout(changeVisitsCount, 500)
+}
+changeVisitsCount();
+
+
+
+const bookTitles = document.querySelectorAll('.book__title');
+const bookAuthors = document.querySelectorAll('.book__author');
+let books = [];
+for (let i = 0; i < bookTitles.length; i++) {
+    books.push(bookTitles[i].innerHTML + ', ' + bookAuthors[i].innerHTML.slice(3));
+}
+
+
+const checkForm = document.getElementById('form');
+const checkButton = document.getElementById('checkCard');
+const profileInfo = document.querySelector('.profile__info');
+const checkUsername = document.getElementById('username');
+const checkCardNum = document.getElementById('cardNumber');
+checkForm.addEventListener('submit', () => {
+    const clone = profileInfo.cloneNode(true);
+    let readersName = localStorage.getItem('firstName') + ' ' + localStorage.getItem('lastName');
+    if (userIcon.getAttribute('auth') == 'false'  && checkUsername.value == readersName && checkCardNum.value == localStorage.getItem('cardNumber')) {
+        checkButton.style.display = 'none';
+        clone.style.marginBottom = '0px';
+        checkForm.appendChild(clone);
+    }
+    setTimeout(resetCheck, 10000)
+    function resetCheck () {
+        clone.style.display = 'none';
+        checkButton.style.display = 'block';
+        checkForm.reset();
+    }
+})
+localStorage.clear()
