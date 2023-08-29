@@ -59,7 +59,7 @@
                                 <button type="submit" class="form-popup__button" id="popupLoginButton">Log In</button>
                                 <div class="form-popup__text">
                                     Don't have an account? 
-                                    <a href="" class="form-popup__link">Register</a>
+                                    <a href="" class="form-popup__link register__link">Register</a>
                                 </div>
                             </form>
                         </div>
@@ -93,7 +93,7 @@
                                 <button type="submit" class="form-popup__button register__button">Sign Up</button>
                                 <div class="form-popup__text">
                                     Already have an account? 
-                                    <a href="" class="form-popup__link">Login</a>
+                                    <a href="" class="form-popup__link login__link">Login</a>
                                 </div>
                             </form>
                         </div>
@@ -525,7 +525,7 @@
                     <h2 class="page__title library-card__title">Digital Library Cards</h2>
                     <div class="library-card__body">
                         <div class="form">
-                            <h3 class="form__title">Find your Library card</h3>
+                            <h3 class="form__title check__title">Find your Library card</h3>
                             <form class="form__body" id="form" action="#">
                                 <div class="form__bg">
                                     <h4 class="form__label">Brooklyn Public Library</h4>
@@ -539,12 +539,19 @@
                                 <button type="submit" class="form__button" id="checkCard">Check the card</button>
                             </form>
                         </div>
-                        <div class="library-card__login">
+                        <div class="library-card__login no-auth">
                             <h4 class="login__title">Get a reader card</h4>
                             <p class="login__text">You will be able to see a reader card after logging into account or you can register a new account</p>
                             <div class="login__buttons">
                                 <button class="login__button" id="signupButton">Sign Up</button>
                                 <button class="login__button" id="loginButton">Log in</button>
+                            </div>
+                        </div>
+                        <div class="library-card__login with-auth">
+                            <h4 class="login__title">Visit your profile</h4>
+                            <p class="login__text">With a digital library card you get free access to the Library’s wide array of digital resources including e-books, databases, educational resources, and more.</p>
+                            <div class="login__buttons">
+                                <button class="login__button" id="profileButton">Profile</button>
                             </div>
                         </div>
                     </div>

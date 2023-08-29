@@ -330,7 +330,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 	font-size: 20px;
 	letter-spacing: 0.4px;
 }
-.info__icon { }
 .info__counts { 
 	font-size: 10px;
 	line-height: 200%;
@@ -345,7 +344,6 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 	line-height: 80%;
 	margin-bottom: 30px;
 }
-.rented-books__list { }
 .rented-books__item { 
 	font-size: 20px;
 	letter-spacing: 2px;
@@ -1112,6 +1110,10 @@ button[disabled]:hover:before {
     align-items: end;
     flex: 0 1 33%;
 }
+.with-auth {
+    display: none;
+}
+
 @media (max-width: 940px) {
     .library-card__login {
         align-items: center;

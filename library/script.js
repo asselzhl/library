@@ -152,12 +152,24 @@ const loginModal = document.getElementById('loginModal');
 const dropRegister = document.getElementById('dropRegister');
 const registerModal = document.getElementById('registerModal');
 const closeButtons = document.querySelectorAll('.form-popup__close');
+const registerLink = document.querySelector('.register__link');
+const loginLink = document.querySelector('.login__link');
 dropLogin.addEventListener ('click', function (e) {
     loginModal.classList.add('_active');
     if (loginModal.classList.contains('_active')) {
         dropMenuNoAuth.classList.remove('_active');
     }
 });
+registerLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    registerModal.classList.add('_active');
+    loginModal.classList.remove('_active');
+})
+loginLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    loginModal.classList.add('_active');
+    registerModal.classList.remove('_active');
+})
 dropRegister.addEventListener('click', function (e) {
     registerModal.classList.add('_active');
     if (registerModal.classList.contains('_active')) {
@@ -189,7 +201,6 @@ signupButton.addEventListener('click', function (e) {
 });
 loginButton.addEventListener('click', function (e) {
     loginModal.classList.add('_active');
-    
 });
 
 /*----------------------------------BUY-CARD__MODAL----------------------------------*/
@@ -237,8 +248,7 @@ formRegister.addEventListener('submit', () => {
     userIcon.setAttribute('auth', true);
     registerModal.classList.remove('_active');
     if (userIcon.getAttribute('auth') == 'true') {
-        changeUserIcon();
-        dropTitleWithAuth.innerHTML = localStorage.getItem('cardNumber');
+        changeToAuthState();
         authCount++;
         
     } 
@@ -266,16 +276,7 @@ function changeUserIcon () {
     userIcon.style.padding = '4.5px';
     userIcon.setAttribute('title', firstName + ' ' + lastName);
 }
-const dropTitleWithAuth = document.getElementById('dropTitleWithAuth');
-const logOut = document.getElementById('logOut');
 
-
-logOut.addEventListener('click', () => {
-    userIcon.setAttribute('auth', false);
-    userIcon.innerHTML = '<img src="./assets/icons/userIcon.svg" alt="">';
-    userIcon.removeAttribute('style');
-    dropMenuWithAuth.classList.remove('_active');
-})
 console.log(localStorage);
 
 let loginInfo = [localStorage.getItem('cardNumber'), localStorage.getItem('registerEmail')];
@@ -298,22 +299,52 @@ loginForm.addEventListener('submit', () => {
         userIcon.setAttribute('auth', true);
         loginModal.classList.remove('_active');
         if (userIcon.getAttribute('auth') == 'true') {
-            changeUserIcon();
-            dropTitleWithAuth.innerHTML = localStorage.getItem('cardNumber');
-            profileCardNum.innerHTML = localStorage.getItem('cardNumber');
-            profileName.innerHTML = localStorage.getItem('firstName') + ' ' + localStorage.getItem('lastName');
+            changeToAuthState();
             authCount++;
-            localStorage.setItem('visitsCount', authCount);
         } 
     }
 })
+const checkTitle = document.querySelector('.check__title');
+const withAuthCheckBlock = document.querySelector('.with-auth');
+const noAuthCheckBlock = document.querySelector('.no-auth');
+const dropTitleWithAuth = document.getElementById('dropTitleWithAuth');
+const logOut = document.getElementById('logOut');
 
+
+
+function changeToAuthState () {
+    cloneProfileInfo();
+    changeUserIcon();
+    dropTitleWithAuth.innerHTML = localStorage.getItem('cardNumber');
+    profileCardNum.innerHTML = localStorage.getItem('cardNumber');
+    profileName.innerHTML = localStorage.getItem('firstName') + ' ' + localStorage.getItem('lastName');
+    checkUsername.value = localStorage.getItem('firstName') + ' ' + localStorage.getItem('lastName');
+    checkCardNum.value = localStorage.getItem('cardNumber');
+    checkTitle.innerHTML = 'Your Library Card';
+    noAuthCheckBlock.style.display = 'none';
+    withAuthCheckBlock.style.display = 'flex';
+}
+function changeToNoAuthState () {
+    userIcon.setAttribute('auth', false);
+    userIcon.innerHTML = '<img src="./assets/icons/userIcon.svg" alt="">';
+    userIcon.removeAttribute('style');
+    dropMenuWithAuth.classList.remove('_active');
+    resetCheck();
+    noAuthCheckBlock.style.display = 'flex';
+    withAuthCheckBlock.style.display = 'none';
+}
+logOut.addEventListener('click', changeToNoAuthState);
 const profileCardNum = document.getElementById('profileCardNum');
 const profileModal = document.getElementById('profileModal');
 const profileButton = document.getElementById('myProfile');
 const profileClose = document.querySelector('.close__button');
 const profileName = document.querySelector('.profile__name');
+const checkProfileButton = document.getElementById('profileButton');
 profileButton.addEventListener('click', () => {
+    profileModal.classList.add('_active');
+    dropMenuWithAuth.classList.remove('_active');
+})
+checkProfileButton.addEventListener('click', () => {
     profileModal.classList.add('_active');
     dropMenuWithAuth.classList.remove('_active');
 })
@@ -348,19 +379,23 @@ const checkButton = document.getElementById('checkCard');
 const profileInfo = document.querySelector('.profile__info');
 const checkUsername = document.getElementById('username');
 const checkCardNum = document.getElementById('cardNumber');
+const clone = profileInfo.cloneNode(true);
+
 checkForm.addEventListener('submit', () => {
-    const clone = profileInfo.cloneNode(true);
     let readersName = localStorage.getItem('firstName') + ' ' + localStorage.getItem('lastName');
     if (userIcon.getAttribute('auth') == 'false'  && checkUsername.value == readersName && checkCardNum.value == localStorage.getItem('cardNumber')) {
-        checkButton.style.display = 'none';
-        clone.style.marginBottom = '0px';
-        checkForm.appendChild(clone);
+        cloneProfileInfo();
     }
     setTimeout(resetCheck, 10000)
-    function resetCheck () {
-        clone.style.display = 'none';
-        checkButton.style.display = 'block';
-        checkForm.reset();
-    }
+    
 })
-localStorage.clear()
+function cloneProfileInfo () {
+    checkButton.style.display = 'none';
+    clone.style.marginBottom = '0px';
+    checkForm.appendChild(clone);
+}
+function resetCheck () {
+    clone.style.display = 'none';
+    checkButton.style.display = 'block';
+    checkForm.reset();
+}
