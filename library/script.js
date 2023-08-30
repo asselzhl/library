@@ -207,9 +207,11 @@ loginButton.addEventListener('click', function (e) {
 const buyButtons = document.querySelectorAll('.card__button');
 const buyCardModal = document.querySelector('.modal__buy-card');
 const buyCardClose = document.querySelector('.buy-card__close');
+let bookNum;
 buyButtons.forEach((buyButton, i) => {
     buyButton.setAttribute('data-num', i);
-    buyButton.addEventListener('click', () => {
+    buyButton.addEventListener('click', (e) => {
+        bookNum = e.target.dataset.num;
         if (userIcon.getAttribute('auth') == 'true') {
             buyCardModal.classList.add('_active');
         } else {
@@ -250,7 +252,7 @@ formRegister.addEventListener('submit', () => {
     if (userIcon.getAttribute('auth') == 'true') {
         changeToAuthState();
         authCount++;
-        
+        localStorage.setItem('visitsCount', authCount);
     } 
 })
 
@@ -301,6 +303,7 @@ loginForm.addEventListener('submit', () => {
         if (userIcon.getAttribute('auth') == 'true') {
             changeToAuthState();
             authCount++;
+            localStorage.setItem('visitsCount', authCount);
         } 
     }
 })
@@ -357,13 +360,14 @@ const copyButton = document.querySelector('.copy__button');
 copyButton.addEventListener('click', () => {
   navigator.clipboard.writeText(profileCardNum.innerText);
 })
+
 const visitsCount = document.getElementById('visitsCount');
+const booksCount = document.getElementById('booksCount');
 function changeVisitsCount () {
     visitsCount.innerHTML = localStorage.getItem('visitsCount'); 
     setTimeout(changeVisitsCount, 500)
 }
 changeVisitsCount();
-
 
 
 const bookTitles = document.querySelectorAll('.book__title');
@@ -409,11 +413,24 @@ for (let i = 0; i < buyInputs.length; i++) {
     buyInputs[i].addEventListener('input', () => {
         buyInputs.forEach((input) => values.push(input.value));
         buyCardButton.disabled = values.includes('');
-        console.log(values[0])
+        if (values[0].length != 16 || values[1].length != 2 || values[2].length != 2  || values[3].length != 3) {
+            buyCardButton.disabled = true;
+        } 
         values = [];
     })
 }
+
+let ownedBooks =[];
 buyCardButton.addEventListener('click', () => {
+    ownedBooks.push(bookNum);
+    buyButtons.forEach(button => {
+        if (button.dataset.num == bookNum) {
+            button.disabled = true;
+            button.innerHTML = 'Own';
+        }
+    })
+    
+    booksCount.innerHTML = ownedBooks.length;
     buyCardModal.classList.remove('_active');
     buyCardForm.reset();
 })
