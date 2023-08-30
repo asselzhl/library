@@ -787,7 +787,7 @@ button[disabled]:hover:before {
     right: -40px;
 }
 .buy-card__body { 
-    max-width: 650px;
+    width: 640px;
     position: absolute;
     top: 50%;
     left: 50%;

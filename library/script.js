@@ -399,3 +399,21 @@ function resetCheck () {
     checkButton.style.display = 'block';
     checkForm.reset();
 }
+const buyCardForm = document.querySelector('.buy-card__form');
+const buyCardButton = document.querySelector('.buy-card__button');
+const buyInputs = document.querySelectorAll('.buy-card__input');
+const bankCardNumber = document.getElementById('bankCardNumber');
+const cvc = document.getElementById('cvc');
+for (let i = 0; i < buyInputs.length; i++) {
+    let values = [];
+    buyInputs[i].addEventListener('input', () => {
+        buyInputs.forEach((input) => values.push(input.value));
+        buyCardButton.disabled = values.includes('');
+        console.log(values[0])
+        values = [];
+    })
+}
+buyCardButton.addEventListener('click', () => {
+    buyCardModal.classList.remove('_active');
+    buyCardForm.reset();
+})
