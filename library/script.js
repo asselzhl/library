@@ -249,6 +249,7 @@ formRegister.addEventListener('submit', () => {
     })
     userIcon.setAttribute('auth', true);
     registerModal.classList.remove('_active');
+    formRegister.reset();
     if (userIcon.getAttribute('auth') == 'true') {
         changeToAuthState();
         authCount++;
@@ -300,6 +301,7 @@ loginForm.addEventListener('submit', () => {
     if (!(loginEmail.classList.contains('error') && loginPassword.classList.contains('error'))) {
         userIcon.setAttribute('auth', true);
         loginModal.classList.remove('_active');
+        loginForm.reset();
         if (userIcon.getAttribute('auth') == 'true') {
             changeToAuthState();
             authCount++;
@@ -359,6 +361,8 @@ profileClose.addEventListener('click', () => {
 const copyButton = document.querySelector('.copy__button');
 copyButton.addEventListener('click', () => {
   navigator.clipboard.writeText(profileCardNum.innerText);
+  copyButton.insertAdjacentHTML('afterend', '<div style="position:absolute; bottom: 15px; left: 338px;" id="cpd">Скопировано</div>');
+  setTimeout(_=> cpd.remove(), 800);
 })
 
 const visitsCount = document.getElementById('visitsCount');
@@ -383,7 +387,9 @@ const checkButton = document.getElementById('checkCard');
 const profileInfo = document.querySelector('.profile__info');
 const checkUsername = document.getElementById('username');
 const checkCardNum = document.getElementById('cardNumber');
-const clone = profileInfo.cloneNode(true);
+let clone;
+setTimeout(() => {clone = profileInfo.cloneNode(true)}, 500);
+
 
 checkForm.addEventListener('submit', () => {
     let readersName = localStorage.getItem('firstName') + ' ' + localStorage.getItem('lastName');
