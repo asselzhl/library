@@ -321,8 +321,10 @@ function changeToAuthState () {
     cloneProfileInfo();
     changeUserIcon();
     dropTitleWithAuth.innerHTML = localStorage.getItem('cardNumber');
+    dropTitleWithAuth.style.fontSize = '10px';
     profileCardNum.innerHTML = localStorage.getItem('cardNumber');
     profileName.innerHTML = localStorage.getItem('firstName') + ' ' + localStorage.getItem('lastName');
+    profileImage.innerHTML = localStorage.getItem('firstName')[0] + localStorage.getItem('lastName')[0];
     checkUsername.value = localStorage.getItem('firstName') + ' ' + localStorage.getItem('lastName');
     checkCardNum.value = localStorage.getItem('cardNumber');
     checkTitle.innerHTML = 'Your Library Card';
@@ -345,6 +347,7 @@ const profileButton = document.getElementById('myProfile');
 const profileClose = document.querySelector('.close__button');
 const profileName = document.querySelector('.profile__name');
 const checkProfileButton = document.getElementById('profileButton');
+const profileImage = document.querySelector('.profile__image');
 profileButton.addEventListener('click', () => {
     profileModal.classList.add('_active');
     dropMenuWithAuth.classList.remove('_active');
@@ -374,12 +377,7 @@ function changeVisitsCount () {
 changeVisitsCount();
 
 
-const bookTitles = document.querySelectorAll('.book__title');
-const bookAuthors = document.querySelectorAll('.book__author');
-let books = [];
-for (let i = 0; i < bookTitles.length; i++) {
-    books.push(bookTitles[i].innerHTML + ', ' + bookAuthors[i].innerHTML.slice(3));
-}
+
 
 
 const checkForm = document.getElementById('form');
@@ -426,17 +424,30 @@ for (let i = 0; i < buyInputs.length; i++) {
     })
 }
 
-let ownedBooks =[];
+const bookTitles = document.querySelectorAll('.book__title');
+const bookAuthors = document.querySelectorAll('.book__author');
+let books = [];
+for (let i = 0; i < bookTitles.length; i++) {
+    books.push(bookTitles[i].innerHTML + ', ' + bookAuthors[i].innerHTML.slice(3));
+}
+
+const rentedBooks = document.querySelector('.rented-books__list');
+let ownedBooksNums =[];
+let ownedBooksList = [];
 buyCardButton.addEventListener('click', () => {
-    ownedBooks.push(bookNum);
+    ownedBooksNums.push(bookNum);
     buyButtons.forEach(button => {
         if (button.dataset.num == bookNum) {
             button.disabled = true;
             button.innerHTML = 'Own';
+            rentedBooks.insertAdjacentHTML('beforeend', `<li class="rented-books__item">${books[bookNum]}</li>`);
         }
     })
-    
-    booksCount.innerHTML = ownedBooks.length;
+   
+    booksCount.innerHTML = ownedBooksNums.length;
     buyCardModal.classList.remove('_active');
     buyCardForm.reset();
 })
+function addBookToList () {
+    
+}

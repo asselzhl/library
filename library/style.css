@@ -293,6 +293,9 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 	background-color: #FFFFFF;
 	width: 80px;
 	height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .profile__image img {
 	max-width: 100%;
@@ -303,6 +306,8 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 	text-transform: capitalize;
 	display: inline-block;
 	padding: 5px 15px;
+    text-align: center;
+    line-height: 130%;
 }
 .profile__body { 
 	padding: 40px 60px 40px 20px;
@@ -344,6 +349,13 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 	font-size: 25px;
 	line-height: 80%;
 	margin-bottom: 30px;
+}
+.rented-books__list {
+    height: 50px;
+    width: 350px;
+    overflow: scroll;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .rented-books__item { 
 	font-size: 20px;
